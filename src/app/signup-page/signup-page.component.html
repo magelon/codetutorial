@@ -1,0 +1,227 @@
+
+<div class="Center"> Sign Up Page</div>
+
+<div class="Center">
+<div *ngIf="!truckerDiv">  
+<form  [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+     
+    <table >
+        <tbody>
+        <tr>
+        <td>
+          Owner Name:
+          
+        </td>
+        <td>
+            <input id="OwnerName"  type="text" formControlName="OwnerName" required>
+        </td>
+        </tr>
+        <tr>
+        <td>Owner Company Name:</td>
+        <td>
+            <input id="OwnerCompanyName"   type="text" formControlName="OwnerCompanyName"  required>
+        </td>
+        </tr>
+        <tr>
+        <td>Owner Company Phone(required):</td>
+        <td>
+            <input id="OwnerCompanyPhone"  type="number" formControlName="OwnerCompanyPhone" required>
+        </td>
+        </tr>
+        <tr>
+        <td>Owner Company Email(required):</td>
+        <td>
+            <input id="OwnerCompanyEmail"  type="email" formControlName="OwnerCompanyEmail" required>
+        </td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        <td><button mat-raised-button type="submit">Submit</button></td>
+        </tr>
+        </tbody>
+        </table>
+
+<!--     <div class="Center">
+        <label for="OwnerName">
+          Owner Name:
+        </label>        
+        <input id="OwnerName"  type="text" formControlName="OwnerName" required>
+      </div>
+
+      <div class="Center">
+          <label for="OwnerCompanyName">
+            Owner Company Name: 
+          </label>
+          <input id="OwnerCompanyName"   type="text" formControlName="OwnerCompanyName"  required>
+        </div>
+
+          <div class="Center">
+                <label for="OwnerCompanyPhone">
+                   Owner Company Phone:
+                </label>
+                <input id="OwnerCompanyPhone"  type="number" formControlName="OwnerCompanyPhone" required>
+              </div>
+
+              <div class="Center">
+                    <label for="OwnerCompanyEmail">
+                        Owner Company Email:
+                    </label>
+                    <input id="OwnerCompanyEmail"  type="email" formControlName="OwnerCompanyEmail" required>
+                  </div>
+
+        <div class="Center">
+          <button class="button " type="submit">Submit</button>
+         </div> -->
+        </form>
+</div>
+<!--driver-->
+    <div *ngIf="truckerDiv">
+      <form  [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+ 
+          <table >
+              <tbody>
+              <tr>
+              <td>Driver Name:
+                <div style="color:red;">(required)</div>
+              </td>
+              <td>
+                  <input id="DriverName"  type="text" formControlName="DriverName" required>
+              </td>
+              </tr>
+
+              <tr>
+                <td>
+                    Employer:
+                    <div style="color:red;">(required)</div>
+                </td>
+                <td>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width"> 
+                      <input type="text"  matInput [formControl]="myControl" [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+                </td>                  
+            </tr>
+
+              <!-- <tr>
+              <td>Employer:</td>
+              <td>
+                  <input id="Employer"  type="text"  required>
+              </td>
+              </tr>-->
+              <tr> 
+
+                <td>Employer Phone:
+                  <div style="color:red;">(required)</div>
+                </td>
+                <td>
+                    <input matInput id="employer Phone"  type="number" formControlName="EmployerPhone" >
+
+                   
+                    <!-- <mat-error *ngIf="EPControl.hasError('required')">
+                       <strong>required</strong>
+                    </mat-error> -->
+
+                </td>
+                </tr>
+
+                <tr> 
+
+                  <td>Employer Email:
+                      
+                  </td>
+                  <td>
+                      <input matInput id="employer Email"  type="text" formControlName="EmployerEmail" >
+                     
+                      <!-- <mat-error *ngIf="EEControl.hasError('required')">
+                        <strong>required</strong>
+                      </mat-error> -->
+
+                  </td>
+                  </tr>
+
+              <tr> 
+
+              <td>Phone:
+                <div style="color:red;">(required)</div>
+              </td>
+              <td>
+                  <input id="Phone"  type="number" formControlName="Phone" required>
+              </td>
+              </tr>
+              <tr>
+              <td>Email:
+                <div style="color:red;">(required)</div>
+              </td>
+              <td>
+                  <input id="Email"  type="email" formControlName="Email" required>
+              </td>
+              </tr>
+              <tr>
+              <td>Address:
+                
+              </td>
+              <td>
+                  <textarea   id="Address"  type="text" formControlName="Address" required>
+                  </textarea>
+              </td>
+              </tr>
+              <tr>
+              <td>&nbsp;</td>
+              <td>
+                  <button mat-raised-button type="submit">Submit</button>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+<!-- 
+    <div class="Center">
+        <label for="DriverName">
+            Driver Name:
+        </label>
+
+        <input id="DriverName"  type="text" formControlName="DriverName" required>
+      </div>
+
+      <div class="Center">
+            <label for="Employer">
+                Employer:
+            </label>
+            <input id="Employer"  type="text" formControlName="Employer" required>
+          </div>
+
+          <div class="Center">
+                <label for="Phone">
+                    Phone:
+                </label>
+                <input id="Phone"  type="number" formControlName="Phone" required>
+              </div>
+
+              <div class="Center">
+                    <label for="Email">
+                        Email:
+                    </label>
+                    <input id="Email"  type="email" formControlName="Email" required>
+                  </div>
+
+                    <div class="Center">
+                        <label for="Address">
+                            Address:
+                        </label>
+                        <textarea   id="Address"  type="text" formControlName="Address" required>
+                        </textarea>
+                      </div>
+                      
+        <div class="Center">
+        <button class="button " type="submit">Submit</button>
+       </div> -->
+      </form>
+      
+    </div>
+
+  </div>

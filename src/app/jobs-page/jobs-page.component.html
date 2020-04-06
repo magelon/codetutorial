@@ -1,0 +1,62 @@
+<div class="Center">
+                <mat-tab-group>
+                <mat-tab label="{{companyName}} created jobs">
+                                        <div *ngIf="length==0">
+                                               🚧 There is 0 job created 🚧
+                                        </div>
+                <ul>
+                                                <li *ngFor="let item of contractorsWithJobBlock "> 
+                                        
+                                                        
+                                                        <a [routerLink]="['/assign',companyName,item.contractor,item.jobId]">
+                                                        
+                                                            Contractor: {{item.contractor}},
+                                                            Date: {{item.driver}},   
+                                                                       
+                                                        </a>
+                                                        <div *ngIf="item.jobCount">
+                                                                outsource:{{item.jobCount}}
+                                                        </div>
+
+                                                         <!-- <span class = "filler">
+                                                               <a [routerLink]="['/JobModify',companyName,item.contractor,item.jobId]">
+                                                                <button mat-button>
+                                                                       <i class="material-icons">
+                                                                        edit
+                                                                        </i>
+                                                                        Modify    
+                                                                </button>
+                                                                </a> 
+                                                        </span> 
+                                                -->
+
+                                                <!-- style="float:right; right: 0;" -->
+                                                        <span >
+                                                                        <!-- <a [routerLink]="['/JobModify',companyName,item.contractor,item.jobId]">
+                                                                        <button mat-button>
+                                                                               <i class="material-icons">
+                                                                                edit
+                                                                                </i>
+                                                                                Modify    
+                                                                        </button>
+                                                                        </a>  -->
+                                                                <button mat-button (click)="deleteJob(item)">
+                                                                        <mat-icon class="material-icons">
+                                                                        delete
+                                                                        </mat-icon>
+                                                                        Delete
+                                                                </button>
+                                                        </span>
+                                                        
+                                                  
+                                                </li>
+                </ul>        
+                </mat-tab>
+                
+                <!-- <mat-tab label="outsource jobs"> Content 2 </mat-tab> -->
+                
+                </mat-tab-group>
+</div>
+
+
+

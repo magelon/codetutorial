@@ -1,0 +1,42 @@
+
+<div *ngIf="afAuth.user|async as user; else showLogin">
+   
+    Login Success!
+    
+</div>
+
+<ng-template #showLogin>
+<form  [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <table >
+            <tbody>
+            <tr>
+            <td>
+             Email:
+              
+            </td>
+            <td>
+                <input id="Email"  type="text" formControlName="Email" required>
+            </td>
+            </tr>
+            <tr>
+            <td>PassWord:</td>
+            <td>
+                <input id="Pass"   type="text" formControlName="Pass"  required>
+            </td>
+            </tr>
+          
+            <tr>
+            <td>&nbsp;</td>
+            <td>
+                <button mat-raised-button type="submit">login</button>
+                <div>&nbsp;</div>
+                <a mat-list-item routerLink="/forgetPass">If you forget password? Rest password!</a>
+                <div>&nbsp;</div>
+                <a mat-list-item routerLink="/register">If you don't have an account? Register!</a>
+            </td>
+        
+            </tr>
+            </tbody>
+    </table>
+</form>
+</ng-template>

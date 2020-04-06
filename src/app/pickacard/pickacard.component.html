@@ -1,0 +1,11 @@
+<button (click)="pickcard()">Random</button>
+{{name}}
+<div *ngIf="cardReadable">
+    <img style="width:267px;height:390px" [src]="rCard.cardImgUrl">
+    <a [routerLink]="['/addcard',rCard.cardId]">details</a>
+</div>
+<div *ngIf="cardReadable">
+    {{desc}}
+</div>
+
+<div id="tester" style="width:400px;height:250px;"></div>

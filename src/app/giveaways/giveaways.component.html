@@ -1,0 +1,58 @@
+
+   <table >
+    <tbody>
+    <tr>
+        <td>
+            Enter Giveaways
+        </td>
+        <td>
+            We just need information below
+            </td>
+    </tr>
+
+    <tr>
+        <td>YouTube user name:
+         
+        </td>
+        <td>
+            <input id="Name"  type="text" [(ngModel)]="uname">
+        </td>
+        </tr>
+
+    <tr>
+    <td>Name:
+     
+    </td>
+    <td>
+        <input id="Name"  type="text" [(ngModel)]="name">
+    </td>
+    </tr>
+
+    <td>Address:
+      
+    </td>
+    <td>
+        <textarea   id="Address" rows="2" cols="25" type="text" [(ngModel)]="address">
+        </textarea>
+    </td>
+    
+    <tr>
+    <td>
+        <button mat-raised-button (click)="update()" >update</button>
+    </td>
+    <td>
+        <div *ngIf="upda">
+            <font color="red">
+            Update successfully!
+           
+            Entered Giveaways!!
+            <i class="material-icons">
+                ondemand_video
+            </i>
+            </font>
+        </div>
+    </td>
+    </tr>
+
+    </tbody>
+    </table>

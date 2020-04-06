@@ -1,0 +1,76 @@
+
+<div *ngIf="uploadAu">
+<mat-card>
+  <mat-card-content>
+    <section  >
+      <a mat-list-item routerLink="/database">
+          <i class="material-icons">
+              feedback
+              </i>
+              Data Base Update
+      </a>
+    </section>
+  </mat-card-content>
+</mat-card>
+</div>
+
+<mat-card>
+    <mat-card-content>
+      <section  >
+        <mat-slide-toggle (change)="clickEvent($event)">
+          Slide me!
+        </mat-slide-toggle>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <section  >
+        <button mat-raised-button (click)="refresh()">
+         Press to get latest version
+        </button>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <section  >
+        <button mat-raised-button (click)="reset()">
+         reset local storage
+        </button>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+     
+  
+      <section  >
+        <a mat-list-item (click)="feedback()">
+            <i class="material-icons">
+                feedback
+                </i>
+                Send Feedback
+        </a>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+
+  <div *ngIf="uploadAu">
+    <mat-card>
+      <mat-card-content>
+        <section  >
+          <a mat-list-item routerLink="/map">
+              <i class="material-icons">
+                card_giftcard
+                  </i>
+                  Youtube Raffle
+          </a>
+        </section>
+      </mat-card-content>
+    </mat-card>
+    </div>

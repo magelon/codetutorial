@@ -1,0 +1,138 @@
+<!-- <form class="example-form Center">
+    <mat-form-field class="example-full-width"> 
+      <input type="text"  matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="cardId" >
+      <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form> -->
+
+ <div class="Center">
+    <input  type="text" [(ngModel)]="searchName" />
+</div>
+
+  <div class="Center">
+    <button (click)="searchByName(searchName)">searchByName</button>
+    
+  </div>
+
+  <mat-grid-list cols="3" >
+    <mat-grid-tile
+       *ngFor="let item of DisplyCollections"
+        >
+        
+       <!-- <div>
+        <h1>Price: {{item.cardPrice}}</h1>
+        <h1>Amount: {{item.cardAmount}}</h1>
+            </div> -->
+        <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc)">
+            <div *ngIf="item">
+            <img [src]="item.cardImgUrl">
+            </div>
+        </button>
+    
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="Center">
+    <button (click)="changingPage(pagenumber-1)"><-</button>
+    &nbsp; 
+    <input type="number" [(ngModel)]="pagenumber">
+    &nbsp;
+    <button (click)="changingPage(pagenumber+1)">-></button>
+
+</div>
+
+  <div class="Center">
+      {{currentNumberOfCards}}
+  </div>
+  <div class="Center">
+    {{cardEnough}}
+</div>
+<div class="Center">
+    {{cardMissing}}
+</div>
+
+    <h3 mat-subheader>Deck</h3>
+    <!-- <ul *ngFor="let folder of deckCollection">
+      
+      <li>
+        <img [src]="folder.cardImgUrl">
+        <h4 mat-line>{{folder.cardId}}</h4>
+        <h4 mat-line>{{folder.cardAmount}}</h4>
+        <h4 mat-line>{{folder.cardPrice}}</h4>
+        <mat-divider></mat-divider>
+      </li>
+      
+    </ul> -->
+
+    <div class="Center">
+      <button (click)="clearDeck()">restDeck</button>
+    </div>
+
+    <!-- <mat-grid-list cols="3" >
+      <mat-grid-tile
+         *ngFor="let item of deckCollection"
+          >
+          <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice)">
+              <div *ngIf="item">
+              <img style="width:89px;height:130px" [src]="item.cardImgUrl">
+              </div>
+          </button>
+      
+      </mat-grid-tile>
+    </mat-grid-list> -->
+
+    main deck: {{mainCollections.length}}
+    <mat-grid-list cols="3" >
+      <mat-grid-tile
+         *ngFor="let item of mainCollections"
+          >
+          
+         <!-- <div>
+          <h1>Price: {{item.cardPrice}}</h1>
+          <h1>Amount: {{item.cardAmount}}</h1>
+              </div> -->
+          <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc)">
+              <div *ngIf="item">
+              <img [src]="item.cardImgUrl">
+              </div>
+          </button>
+      
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+  extra deck: {{extraCollections.length}}
+  
+    <mat-grid-list cols="3" >
+      <mat-grid-tile
+         *ngFor="let item of extraCollections"
+          >
+          
+         <!-- <div>
+          <h1>Price: {{item.cardPrice}}</h1>
+          <h1>Amount: {{item.cardAmount}}</h1>
+              </div> -->
+          <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc)">
+              <div *ngIf="item">
+              <img [src]="item.cardImgUrl">
+              </div>
+          </button>
+      
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+
+    <div class="Center">
+      Deck Name:<input  type="text" [(ngModel)]="deckName" />
+    </div>
+
+    <div class="Center">
+      <button (click)="saveDeck()">SaveDeck</button>
+      <button (click)="loadDeck()">LoadDeck</button>
+    </div>
+   
+

@@ -1,0 +1,22 @@
+<div class="Center">
+<mat-tab-group>
+    <mat-tab label="Last Tag"> 
+      <div *ngIf="count==0">
+           <p>🚧 There is 0 job on going 🚧</p>
+           <!-- <p>😵 update employer name to make sure receive jobs 😵</p> -->
+      </div>
+            <ul>
+                    <li *ngFor="let item of contractorsWithJobBlock "> 
+                            <a [routerLink]="['/StageOne',userId,item.contractor,item.jobId]">
+                                Contractor: {{item.contractor}},
+                                JobDate: {{item.jobCount}}
+                            </a>
+                </li>
+              </ul>    
+    </mat-tab>
+
+    <!-- <mat-tab label="Out Sources on going job"> Content 2 </mat-tab> -->
+  </mat-tab-group>
+</div>
+
+   

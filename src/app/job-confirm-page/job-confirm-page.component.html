@@ -1,0 +1,56 @@
+
+<div class="Center">
+<h2>Job Details</h2>
+</div>
+<div class="Center">
+<table>
+  <tr >
+    <td>Driver:</td>
+    <td>{{name}}</td>
+  </tr>
+  <tr>
+    <td>Arrive at:</td>
+    <td>{{info.ArriveAt}}</td>
+  </tr>
+  <tr>
+    <td>Arrive time:</td>
+    <td>{{info.ArriveTime}},{{info.JobDate}}</td>
+  </tr>
+  <tr>
+    <td>Job:</td>
+    <td>{{info.Job}}</td>
+  </tr>
+  <tr>
+    <td>Foreman:</td>
+    <td>{{info.Foreman}}</td>
+  </tr>
+  <tr>
+    <td>Destination:</td>
+    <td>{{info.LoadAt}}</td>
+  </tr>
+  <tr>
+    <td>Job ID:</td>
+    <td>{{jobId}}</td>
+  </tr>
+  <tr>
+    <td>Contractor:</td>
+    <td>{{contractorName}}</td>
+  </tr>
+  <tr>
+    <td>Broker:</td>
+    <td>{{companyName}}</td>
+  </tr>
+  <tr>
+    <td>OwnerOp:</td>
+    <td>{{companyName}}</td>
+  </tr>
+</table>
+</div>
+
+<div class="Center" *ngIf="info.Times>0">
+    <button (click)="comfirm()">Confirm</button>
+</div>
+
+    <div class="Center" *ngIf="info.Occupied<=0">
+        <button >Jobs Done</button>
+    </div>

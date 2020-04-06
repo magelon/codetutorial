@@ -1,0 +1,172 @@
+<div class="Center">
+<mat-tab-group headerPosition="below">
+  <mat-tab label="Company Truckers"> 
+      <table style="width: 300px; float: left;">
+          <tbody>
+          <tr>
+          <td>{{companyName}} Truckers</td>
+          </tr>
+          <tr *ngFor="let item of tArray  ">
+            <td>
+                <mat-card class="example-card">
+                    <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"
+                            [ngStyle]="{ 'background-image': 'url(' + item.Icon + ')'}"
+                            ></div>
+                      <mat-card-title></mat-card-title>
+                      <mat-card-subtitle>
+                         
+                      </mat-card-subtitle>
+                      
+                    </mat-card-header>       
+                      
+                    <mat-card-content>
+        
+                            <div>
+                            <p>Driver: {{item.DriverName}}</p>
+                            </div>
+                                    
+                            <div>
+                            <p>Phone: {{item.Phone}}</p>
+                            </div>
+                                        
+                            <div >
+                            <p>Email: {{item.Email}}</p>
+                            </div>
+                                            
+                            <div>
+                            <p>State: {{item.State}}</p>
+                            </div>
+                    </mat-card-content>
+                    <div *ngIf="item.State!='busy'">
+                        <td><input type="checkbox" value={{item.Email}} (change)="toggleEditable($event)"> </td>
+                      </div>
+                    <mat-card-actions>
+                      
+                    </mat-card-actions>
+                </mat-card>
+            </td>
+          </tr>
+        
+          <tr>
+            <td>
+              <ul *ngFor="let item of assign">
+                  <li>
+                    {{item|json}}
+                  </li>
+                </ul>
+            
+                <div class="Center">
+                  <button mat-raised-button (click)="assignJob()">assign jobs</button>
+                </div>
+              </td>
+          </tr>
+        
+          <tr>
+              <td>
+                  <div style="width: 300px; float: left;">
+                      <p>{{assignSize}} Trucker assigned</p>
+                 
+                  
+                        <ul *ngFor="let item of items3|async">
+                          <li>
+                            {{item.Email}}
+                            {{item.State}}
+                          </li>
+                        </ul>
+                
+                </div>
+              </td>
+          </tr>
+          </tbody>
+        </table>
+  </mat-tab>
+
+  <mat-tab label="Out sources/Subhaulers"> 
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="out Sources" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form> 
+
+        <div *ngIf="Owneritem">
+            <mat-card class="example-card">
+                <mat-card-header>
+                         <div mat-card-avatar class="example-header-image"
+                        [ngStyle]="{ 'background-image': 'url(' + Owneritem.Icon + ')'}"
+                        ></div> 
+                  <mat-card-title></mat-card-title>
+                  <mat-card-subtitle>
+                     
+                  </mat-card-subtitle>
+                  
+                </mat-card-header>       
+                  
+                <mat-card-content>
+    
+                        <div>
+                        <p>Owner: {{Owneritem.OwnerCompanyName}}</p>
+                        </div>
+                                
+                        <div>
+                        <p>Owner Phone: {{Owneritem.OwnerCompanyPhone}}</p>
+                        </div>
+                                    
+                        <div >
+                        <p>Owner Email: {{Owneritem.OwnerCompanyEmail}}</p>
+                        </div>
+                        
+                          <form [formGroup]="ownerForm">
+
+                          <label>number</label>
+                          <input type="text"  formControlName="number" required>
+                          <label>pay rate</label>
+                          <input type="text"  formControlName="rate" required>
+
+                        </form>
+
+                </mat-card-content>
+                 
+                <mat-card-actions>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        
+        <ul *ngFor="let item of Oassign">
+            <li>
+              {{item}}
+            </li>
+          </ul>
+
+          <button mat-raised-button (click)="assignOwner()">assign Owner jobs</button>
+
+          <!-- <tr>
+            <td>
+                <div style="width: 300px; float: left;">
+                    <p>{{assignSize}} Owner assigned</p>
+               
+                
+                      <ul *ngFor="let item of items3|async">
+                        <li>
+                          {{item.Email}}
+                          {{item.State}}
+                        </li>
+                      </ul>
+              
+              </div>
+            </td>
+        </tr> -->
+
+  </mat-tab> 
+  
+</mat-tab-group>
+
+</div>
+
+

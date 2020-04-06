@@ -1,0 +1,44 @@
+
+
+
+
+<div *ngIf="registerSuccess">
+    successfully registed!
+
+</div>
+
+<div *ngIf="registerFailed">
+   register failed! 
+</div>
+
+<div *ngIf="!registerSuccess&&!registerFailed">
+
+
+<form  [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+        <table >
+                <tbody>
+                <tr>
+                <td>
+                 Email:
+                  
+                </td>
+                <td>
+                    <input id="Email"  type="text" formControlName="Email" required>
+                </td>
+                </tr>
+                <tr>
+                <td>PassWord:</td>
+                <td>
+                    <input id="Pass"   type="text" formControlName="Pass"  required>
+                </td>
+                </tr>
+              
+                <tr>
+                <td>&nbsp;</td>
+                <td><button mat-raised-button type="submit">register</button></td>
+                </tr>
+                </tbody>
+        </table>
+</form>
+
+</div>

@@ -1,0 +1,7 @@
+.scrolling-wrapper-flexbox {
+    
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}  

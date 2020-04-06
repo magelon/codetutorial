@@ -1,0 +1,192 @@
+
+<div class="Center"> Create Job Page </div>
+<div class="Center">
+  <p>
+  It is 👌 to leave blank if you don't have sertain information 💯
+  </p>
+</div>
+
+<div class="Center">  
+    <form  [formGroup]="JobForm" (ngSubmit)="onSubmit(JobForm.value)">
+     
+      <table style="width: 300px; float: left;">
+        <tbody>
+        <tr>
+        <td>Contractor:(required)</td> 
+        <td>
+          <input id="Contractor" matInput  type="text" formControlName="Contractor"  >
+        </td>
+        </tr>
+        <tr>
+        <td>Contractor Email:</td>
+        <td>
+          <input id="ContractorEmail" matInput  type="text" formControlName="ContractorEmail"  >
+        </td>
+        </tr>
+              <!-- <tr>
+                <td colspan="2">
+                    If you are Sub Hauler/outSource
+                    <input type="checkbox" (change)="toggleEditable($event)">
+                </td>
+              </tr>
+
+              <tr *ngIf="subHa">
+                  <td>Sub Hauler</td>
+                  <td>
+                  <input id="SubHauler" matInput type="text" formControlName="SubHauler" >
+                  </td>
+              </tr>
+              <tr *ngIf="subHa">
+        <td>Parent Hauler</td>
+        <td>
+        <input id="ParHauler" matInput type="text" formControlName="ParHauler" >
+        </td>
+              </tr>
+              <tr *ngIf="subHa">
+            <td>Parent Hauler email</td>
+            <td>
+            <input id="ParHauler email" matInput type="text" formControlName="ParHaulerEmail" >
+            </td>
+              </tr>
+                <tr *ngIf="subHa">
+                <td>Parent Hauler Phone</td>
+                <td>
+                <input id="ParHauler phone" matInput type="text" formControlName="ParHaulerPhone" >
+                </td>
+                </tr>  -->
+        <tr>
+        <td>Manifest No(optional):</td>
+        <td>
+        <input id="ManifestNo" matInput type="text" formControlName="ManifestNo" >
+        </td>
+        </tr>
+        <!-- <tr>
+        <td>
+          <div>Foreman/Contact/Consignee</div>
+          <div>(optional):</div>
+        </td>
+        <td>
+          <input id="Foreman" matInput type="text" formControlName="Foreman" >
+        </td>
+        </tr>
+        <tr>
+        <td>Foreman Email(optional):</td>
+        <td>
+          <input id="ForemanEmail" matInput type="text" formControlName="ForemanEmail" >
+        </td>
+        </tr>
+        <tr>
+        <td>Foreman Phone(optional):</td>
+        <td>
+            <input id="ForemanPhone" matInput type="number" formControlName="ForemanPhone" >
+        </td>
+        </tr> -->
+        <tr>
+        <td>Broker Name:</td>
+        <td>
+            <input id="Broker" matInput type="text" formControlName="BrokerName" >
+        </td>
+        </tr>
+        <tr>
+        <td>BrokerPhone:</td>
+        <td>
+            <input id="BrokerPhone" matInput type="text" formControlName="BrokerPhone" >
+        </td>
+        </tr>
+        <tr>
+        <td>BrokerEmail:</td>
+        <td>
+            <input id="BrokerEmail" matInput type="text" formControlName="BrokerEmail" >
+        </td>
+        </tr>
+        <tr>
+        <td>JobID(optional):</td>
+        <td>
+          <input id="JobID" matInput type="text" formControlName="JobID" >
+        </td>
+        </tr>
+        <tr>
+        <td>Material:</td>
+        <td>
+            <input id="Job" matInput type="text" formControlName="Job" >
+        </td>
+        </tr>
+        <tr>
+          <td>Trucks:</td>
+          <td>
+              <input id="Trucks" matInput type="text" formControlName="Trucks" >
+          </td>
+          </tr>
+        <tr>
+          <td>Pay Rate(load/hour)💵</td>
+          <td>
+              <input matInput type="text" formControlName="Rate" >
+          </td>
+        </tr>
+        <tr>
+        <td>JobDate:</td>
+        <td>
+            <mat-form-field>
+                <input matInput 
+                [ngModel]="date"
+                (ngModelChange)="date($event)" 
+                
+                [matDatepicker]="picker" 
+                placeholder="Choose a date" 
+                formControlName="JobDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>                 
+        </td>
+        </tr>
+        <tr>
+        <td>Day:</td>
+        <td>{{day}}</td>
+        </tr>
+        <tr>
+        <td>Arrive Time:</td>
+        <td>
+            <input id="ArriveTime" matInput type="text" formControlName="ArriveTime" >                    
+        </td>
+        </tr>
+        <tr>
+        <td>Point of Origin:</td>
+        <td>
+            Point of Origin Address
+            <input id="ArriveAt"  type="text" formControlName="ArriveAt" >
+            <br>
+            City 
+            <br>
+            <input id="ocity"  type="text" formControlName="Ocity">
+        </td>
+        </tr>
+        <tr>
+        <td>Destination:</td>
+        <td>
+            Destination Address
+            <input id="LoadAt"  type="text" formControlName="LoadAt" >
+            <br>
+            City 
+            <br>
+            <input id="dcity"  type="text" formControlName="Dcity">
+        </td>
+        </tr>      
+        <tr>
+          <td >
+              
+          </td>
+          <td> 
+            <button mat-raised-button type="submit">Done</button>
+          </td>
+        </tr>
+        </tbody>
+        </table>
+                       <!--  <div class="Center">
+                          <label for="Times">
+                              Times:
+                          </label>
+                          <input id="Times"  type="text" formControlName="Times" required>
+                          
+                          </div> -->
+            </form>
+          </div>

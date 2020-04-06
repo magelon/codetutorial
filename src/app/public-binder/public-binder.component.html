@@ -1,0 +1,39 @@
+
+
+
+
+<div>
+    <!-- <th  *ngFor="let number of pageArr ; let i = index"> -->
+    
+       totally:{{cardsSize}} value:{{cardV}} totally {{pageArr?.length}}pages
+    
+        <div>
+                <button (click)="changingPage(pagenumber)">go to page</button>
+    
+                <input type="number" [(ngModel)]="pagenumber">
+        </div>
+        
+        <!-- <input type="string" [(ngModel)]="cardSearchName">
+        <button (click)="cardSearch(cardSearchName)">search by name</button> -->
+    
+    
+                <mat-grid-list cols="3" >
+                    <mat-grid-tile
+                       *ngFor="let item of DisplyCollections"
+                        >
+                        
+                        <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc,item.cardName)">
+                            <img [src]="item.cardImgUrl">
+                        </button>
+                    
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                  
+    </div>
+    
+    <div class="Center">
+            <button (click)="changingPage(pagenumber-1)"><-</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button (click)="changingPage(pagenumber+1)">-></button>
+    
+    </div>

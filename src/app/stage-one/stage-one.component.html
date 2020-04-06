@@ -1,0 +1,1078 @@
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+  <mat-panel-title>
+    Job Details Panel
+  </mat-panel-title>
+  <!-- <mat-panel-description>
+    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+  </mat-panel-description> -->
+</mat-expansion-panel-header>
+
+<div class="scrolling-wrapper-flexbox">
+<table >
+    <tbody>
+    <tr>
+    <td>
+    <table>
+    <tbody>
+    <tr>
+    <td>Day: {{info?.Day}}</td>
+    </tr>
+    <tr>
+    <td>Date:{{info?.JobDate}}</td>
+    </tr>
+    </tbody>
+    </table>
+    </td>
+    <td>
+      <div *ngIf="subha ; else showPar">
+        <h1 style="text-align: center;">{{info?.BrokerDispatcherName}}</h1>
+        <h2 style="text-align: center;">General Hauling</h2>
+        <h2 style="text-align: center;">Cell:{{info?.BrokerDispatcherPhone}}</h2>
+        <p style="text-align: center;">{{info?.BrokerEmail}}</p>
+      </div>
+      <ng-template #showPar>
+          <h1 style="text-align: center;">{{info?.ParHauler}}</h1>
+          <p style="text-align: center;">{{info?.ParHaulerPhone}}</p>
+          <p style="text-align: center;">{{info?.ParHaulerEmail}}</p>
+      </ng-template>
+    </td>
+    <td>
+    <table>
+    <tbody>
+    <tr>
+    <td>SHIPPING ORDER and FREIGHT BILL</td>
+    </tr>
+    </tbody>
+    </table>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3">
+          <table  style="float: left;">
+              <tbody>
+                <tr *ngIf="!subha">
+                  <td colspan="2">
+                    Sub Hauler:{{info?.ParHauler}} - {{info?.OwnerCompanyName}}
+                  </td>
+                </tr>
+              <tr>
+              <td>PRIME CARRIER: {{info?.BrokerDispatcherName}}</td>
+              <td>P.O.No/JOB#: {{info?.JobID}}</td>
+              </tr>
+              <tr>
+              <td>SHIPPER/CONTRACTOR:{{info?.Contractor}}</td>
+              <td>CONSIGNEE: {{info?.Foreman}}</td>
+              </tr>
+              <tr>
+              <td>POINT OF ORIGIN: {{info?.ArriveAt}}</td>
+              <td>DESTINATION: {{info?.LoadAt}}</td>
+              </tr>
+              <tr>
+              <td>CITY: {{info?.Ocity}}</td>
+              <td>CITY: {{info?.Dcity}}</td>
+              </tr>
+              <tr>
+              <td> 
+                  Pay by load/hour: {{info?.Rate}}
+              </td>
+              <td>
+                MANIFEST No. {{info?.ManifestNo}}
+              </td>
+              </tr>
+              </tbody>
+          </table>
+          <button (click)="giveUp()">give up</button>
+    </td>
+    </tr>
+    </tbody>
+</table>
+
+</div>
+    <!--jobs info?rmations-->
+   
+ 
+</mat-expansion-panel>
+</mat-accordion>
+
+    <!-- <div class="Center">
+    <label for="Note">
+        Notes:
+    </label>
+    <input id="Note"   type="text" formControlName="Note" >
+    </div> -->
+
+        <!-- trucker info?rmation -->
+        <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Truck Informations</ng-template>
+                
+                <div class="scrolling-wrapper-flexbox">
+                <table style="width: 200px;">
+                  <tbody>
+                  <tr>
+                  <td >Truck Num</td>
+                  <td ><input id="TruckNumber"  style="width: 100px" type="text" formControlName="TruckNumber" ></td>
+                  </tr>
+                  <tr>
+                  <td >LicensePlate</td>
+                  <td ><input id="LicPlate" style="width: 100px"  type="text" formControlName="LicPlate" ></td>
+                  </tr>
+                  <tr>
+                  <td >Truck Type</td>
+                  <td ><input id="TruckType" style="width: 100px"  type="text" formControlName="TruckType" ></td>
+                  </tr>
+                  <tr>
+                  <td style=" text-align: center;" colspan="2">
+                    <div  *ngIf="!truckDataTimeStamp">
+                      <button (click)="updateTruckInfo()">done</button>
+                      </div>
+
+                      <div  *ngIf="truckDataTimeStamp">
+                      <button (click)="updateTruckInfo()">modify</button>
+                      </div>
+                  </td>
+                  </tr>
+                      <div *ngIf="hide">
+                  <tr>
+                  <td >DATA ENTERED</td>
+                  <td >     
+                    <input  type="text" [(ngModel)]="truckDataTimeStamp" formControlName="trucktimestamp" disabled >
+                  </td>
+                  </tr>
+                      </div>
+
+                  </tbody>
+                </table>
+                </div>
+               <!--  <div class="Center">
+                    <label for="TruckNumber">
+                        Truck Number:
+                    </label>
+                    <input id="TruckNumber"   type="text" formControlName="TruckNumber" >
+                  </div>
+
+                  <div class="Center">
+                      <label for="LicPlate">
+                          Licence Plate:
+                      </label>
+                      <input id="LicPlate"   type="text" formControlName="LicPlate" >
+                    </div>
+
+                    <div class="Center">
+                        <label for="TruckType">
+                            Truck Type:
+                        </label>
+                        <input id="TruckType"   type="text" formControlName="TruckType" >
+                      </div>
+                      
+                      <div class="Center" *ngIf="!truckDataTimeStamp">
+                      <button (click)="updateTruckInfo()">u</button>
+                      </div>
+
+                      <div class="Center" *ngIf="truckDataTimeStamp">
+                      <button (click)="modifyTruckInfo()">m</button>
+                      </div>
+
+                      <div class="Center">
+                          <label>
+                              Data Entered:
+                          </label>
+                          <input  type="text" [(ngModel)]="truckDataTimeStamp" formControlName="trucktimestamp" disabled >
+                      </div> -->
+                
+              <div>
+                <!-- <button mat-button matStepperNext>Next</button> -->
+              </div>
+            </form>
+          </mat-step>
+
+          <!-- begin shift -->
+          <!-- <mat-step [stepControl]="seventhFormGroup">
+              <form [formGroup]="seventhFormGroup">
+              <ng-template matStepLabel>Begin Shift</ng-template>
+
+              <table style="width: 296px; float: left;">
+                <tbody>
+                <tr>
+                <td style="width: 138px;">BEGIN SHIFT TIME</td>
+                <td style="width: 146px;">
+                  <input matInput placeholder="Begin shift time" formControlName="BeginShiftTime" required>
+                </td>
+                </tr>
+                <tr>
+                <td style="width: 138px; text-align: center;" colspan="2">
+                  <div  *ngIf="!BeginShiftTimeStamp">
+                    <button (click)="updateBeginShift()">u</button>
+                    </div>
+
+                    <div  *ngIf="BeginShiftTimeStamp">
+                    <button (click)="updateBeginShift()">m</button>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td style="width: 138px;">DATA ENTERED</td>
+                <td style="width: 146px;">
+                  <input  type="text" [(ngModel)]="BeginShiftTimeStamp" formControlName="beginshifttimestamp" disabled >
+                </td>
+                </tr>
+                </tbody>
+                </table>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+          </mat-step> -->
+          
+          <!-- arrive time -->
+         <!--  <mat-step [stepControl]="forthFormGroup">
+              <form [formGroup]="forthFormGroup">
+                <ng-template matStepLabel>Time Arrive At Site</ng-template>
+
+                <table style="width: 296px; float: left;">
+                  <tbody>
+                  <tr>
+                  <td style="width: 138px;">TIME ARRIVE AT SITE</td>
+                  <td style="width: 146px;">
+                    <input matInput placeholder="Time Arrive At Site" formControlName="ArriveAtSiteTime" required>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td style="width: 138px; text-align: center;" colspan="2">
+                    <div *ngIf="!ArriveTimeStamp">
+                      <button (click)="updateArrive()">u</button>
+                      </div>
+  
+                      <div *ngIf="ArriveTimeStamp">
+                      <button (click)="updateArrive()">m</button>
+                      </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td style="width: 138px;">DATA ENTERED</td>
+                  <td style="width: 146px;">
+                    <input  type="text" [(ngModel)]="ArriveTimeStamp" formControlName="arrivetimestamp" disabled >
+                   
+                  </td>
+                  </tr>
+                  </tbody>
+                  </table>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+          </mat-step> -->
+
+          <!-- loading unloading -->
+          <mat-step [stepControl]="fifthFormGroup">
+                
+                  <ng-template matStepLabel>Loading and Unloading</ng-template>
+                   
+                  <form [formGroup]="fifthFormGroup">
+
+                      <div class="scrolling-wrapper-flexbox">
+                      <table style="width: 100px;">
+                          <tbody>
+                             <!--<tr>
+                              <td style="width: 600px;" colspan="3">
+                                Tip:make up your load id for short memories
+                              </td> 
+                            </tr>-->
+                            <div *ngIf="hide">
+                            <tr>
+                                <td style="width: 50px;">
+                                <div>
+                                <div>Load ID:</div>
+                                </div>
+                                </td>
+                                <td style="width: 100px;" colspan="2">
+                                <div>
+                                <div>
+                                    <input id="LoadID"  type="text" formControlName="LoadId" >
+                                </div>
+                                </div>
+                                </td>
+                              </tr>
+                          </div>
+                          <tr>
+                          <td style="width: 60px;">
+                          <div>
+                            <div>Scale Tag ID</div>
+                            <div>(optional)</div>
+                          </div>
+                          </td>
+                          <td style="width: 250px;" colspan="2">
+                          <div>
+                          <div>
+                              <input id="ScaleTagID"  type="text" formControlName="ScaleTagID" >
+                          </div>
+                          </div>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="width: 60px;">
+                          <div>
+                          <div>Weight</div>
+                          <div>(optional)</div>
+                          </div>
+                          </td>
+                          <td style="width: 100px;" colspan="2">
+                          <div>
+                          <div>
+                              <input id="Weight" type="text" formControlName="Weight" >
+                          </div>
+                          </div>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="width: 60px;">
+                          <div>
+                          <div>Material</div>
+                          <div>(optional)</div>
+                          </div>
+                          </td>
+                          <td style="width: 100px;" colspan="2">
+                          <div>
+                          <div>
+                              <input id="Material" type="text" formControlName="Material" >
+                          </div>
+                          </div>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="width: 60px;">&nbsp;</td>
+                          <td style="width: 100px;">Time Arrive</td>
+                          <td style="width: 100px;">Time Depart</td>
+                          </tr>
+                          <tr>
+                          <td style="width: 60px;">Loading</td>
+                          <td style="width: 100px;">
+                              <input id="LoadStart" style="width: 70px" type="text" formControlName="LoadStart" >
+                          </td>
+                          <td style="width: 100px;">
+                              <input id="LoadEnd" style="width: 70px" type="text" formControlName="LoadEnd" >
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="width: 60px;">Unloading</td>
+                          <td style="width: 100px;">
+                              <input id="UnloadStart" style="width: 70px" type="text" formControlName="UnloadStart" >
+                          </td>
+                          <td style="width: 100px;">
+                              <input id="UnloadEnd" style="width: 70px"  type="text" formControlName="UnloadEnd" >
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="width: 100px; text-align: center;" colspan="3">
+                              <div class="Center" *ngIf="!LoadTimeStamp">
+                                  <button (click)="updateLoad()">save</button>
+                                  </div>
+
+                                  <div class="Center" *ngIf="LoadTimeStamp">
+                                      <button (click)="updateLoad()">save</button>
+                                  </div>
+
+                                  <div class="Center">
+                                      (you can save the data any time and modify later by click modify button inside below loads)
+                                  </div>
+                          </td>
+                          </tr>
+                                <div *ngIf="hide">
+                          <tr>
+                          <td style="width: 10px;">DATA ENTERED</td>
+                          <td style="width: 10px;" colspan="2">
+                              <input  type="text" [(ngModel)]="LoadTimeStamp" formControlName="loadtimestamp" disabled >
+                          </td>
+                          </tr>
+                                </div>
+                          <tr>
+                              <td style="width: 100px;" colspan="3">
+                              
+                                  <mat-list  *ngFor="let hero of tabs| async; let i = index">
+                                      <mat-accordion>
+                                          <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                              LoadID: {{i+1}}
+                                          </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <mat-list-item >ScaleTagID: {{hero.ScaleTagID}}</mat-list-item>
+                                        <mat-list-item >Weight: {{hero.Weight}}</mat-list-item>
+                                        <mat-list-item >Material: {{hero.Material}}</mat-list-item>
+                                        <mat-list-item >LoadStart:{{hero.LoadStart}}</mat-list-item>
+                                        <mat-list-item >LoadEnd: {{hero.LoadEnd}}</mat-list-item>
+                
+                                        <mat-list-item >UnloadStart: {{hero.UnloadStart}}</mat-list-item>
+                                        <mat-list-item >UnloadEnd: {{hero.UnloadEnd}}</mat-list-item>
+                                        <!-- <mat-list-item >DataEntered: {{hero.LoadTimeStamp}}</mat-list-item> -->
+                                        
+                                        <button (click)="deleteLoad(hero)">delete</button>
+                                        &nbsp;	&nbsp;
+                                        <button (click)="modifyLoad(hero)">modify</button>
+                                        </mat-expansion-panel>
+                                        </mat-accordion>                   
+                                  </mat-list> 
+
+                              </td>
+                              </tr>
+                         
+
+                          </tbody>
+                      </table>
+                      </div>                   
+                       <!--  <div class="Center">
+                            <label for="ScaleTagID">
+                                Scale Tag ID: 
+                            </label>
+                           
+                            <input id="ScaleTagID"   type="text" formControlName="ScaleTagID" >
+                           
+                          </div>
+                  
+                        <div class="Center">
+                            <label for="Weight">
+                                Weight: 
+                            </label>
+                           
+                            <input id="Weight"   type="text" formControlName="Weight" >
+                           
+                          </div>
+                    
+                          <div class="Center">
+                              <label for="Material">
+                                  Material: 
+                              </label>
+                             
+                              <input id="Material"   type="text" formControlName="Material" >
+                             
+                            </div>
+                  
+                            <div class="Center">
+                                <label for="TimeArive">
+                                    Time Arrive: 
+                                </label>
+                                <label for="TimeDepart">
+                                    Time Depart: 
+                                </label>
+                              </div>
+                  
+                              <div class="Center">
+                                  <label for="Loading">
+                                      Loading: 
+                                  </label>
+                                 
+                                  <input id="LoadStart" style="width: 100px" type="text" formControlName="LoadStart" >
+                                 
+                                  <input id="LoadEnd" style="width: 100px" type="text" formControlName="LoadEnd" >
+                                 
+                                </div>
+                  
+                                <div class="Center">
+                                    <label for="Unloading">
+                                        Unloading: 
+                                    </label>
+                                   
+                                    <input id="UnloadStart" style="width: 100px" type="text" formControlName="UnloadStart" >
+                                    <input id="UnloadEnd" style="width: 100px"  type="text" formControlName="UnloadEnd" >
+                                   
+                                  </div>
+
+                                  <div class="Center" *ngIf="!LoadTimeStamp">
+                                      <button (click)="updateLoad()">u</button>
+                                      </div>
+                  
+                                      <div class="Center" *ngIf="LoadTimeStamp">
+                                      <button (click)="modifyLoad()">m</button>
+                                      </div>
+                  
+                                      <div class="Center">
+                                          <label>
+                                              Data Entered:
+                                          </label>
+                                          <input  type="text" [(ngModel)]="LoadTimeStamp" formControlName="loadtimestamp" disabled >
+                                      </div> -->
+
+                  </form>
+
+                  <div>
+                    <!-- <button mat-button matStepperPrevious>Back</button> -->
+                    <!-- <button mat-raised-button >Save(New Load)</button> -->
+                    <!-- <button mat-button matStepperNext>Next</button> -->
+                  </div>
+               
+          </mat-step>
+
+      <!-- end shift -->
+      <mat-step [stepControl]="eighthFormGroup">
+        <form [formGroup]="eighthFormGroup">
+        <ng-template matStepLabel>End Shift</ng-template>
+
+        <div class="scrolling-wrapper-flexbox">
+
+        <table style="width: 100px;">
+          <tbody>
+<tr>
+  <td style="width: 80px;">Start Shift Time</td>
+  <td  style="width: 80px;">
+    <input matInput placeholder="Start Shift Time" formControlName="StartShiftTime" required>
+  </td>
+</tr>
+
+
+          <tr>
+          <td style="width: 80px;">End Shift Time</td>
+          <td style="width: 80px;">
+            <input matInput placeholder="End shift time" formControlName="EndShiftTime" required>
+          </td>
+          </tr>
+
+<tr>
+  <td style="width: 80px;">Net Time</td>
+  <td style="width: 80px;">
+    <input placeholder="net time" type="text" formControlName="ESnetTime">
+  </td>
+</tr>
+
+          <tr>
+          <td style="width: 80px; text-align: center;" colspan="2">
+            <div  *ngIf="!EndShiftTimeStamp">
+              <button (click)="updateEndShift()">done</button>
+              </div>
+
+              <div  *ngIf="EndShiftTimeStamp">
+              <button (click)="updateEndShift()">modify</button>
+              </div>
+          </td>
+          </tr>
+
+          <div *ngIf="hide">
+          <tr>
+          <td style="width: 80px;">DATA ENTERED</td>
+          <td style="width: 80px;">
+            <input  type="text" [(ngModel)]="EndShiftTimeStamp" formControlName="endshifttimestamp" disabled >
+          </td>
+          </tr>
+          </div>
+
+          </tbody>
+          </table>
+        </div>
+
+        <!--  <mat-form-field>
+            <input matInput placeholder="Begin shift time" formControlName="BeginShift" required>
+          </mat-form-field>
+
+          <div class="Center" *ngIf="!BeginShiftTimeStamp">
+              <button (click)="updateBeginShift()">u</button>
+              </div>
+
+              <div class="Center" *ngIf="BeginShiftTimeStamp">
+              <button (click)="modifyBeginShift()">m</button>
+              </div>
+
+              <div class="Center">
+                  <label>
+                      Data Entered:
+                  </label>
+                  <input  type="text" [(ngModel)]="BeginShiftTimeStamp" formControlName="beginshiftsimestamp" disabled >
+              </div> -->
+
+      <div>
+        <!-- <button mat-button matStepperPrevious>Back</button> -->
+        <!-- <button mat-button matStepperNext>Next</button> -->
+      </div>
+      </form>
+      </mat-step>
+
+                    <!-- confirm -->
+                    <mat-step>
+                    <ng-template matStepLabel>Confirm</ng-template>
+                    <div class="scrolling-wrapper-flexbox">
+                      
+                        <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td>
+                            <table style="margin-left: auto; margin-right: auto; width: 121px;">
+                            <tbody>
+                            <tr>
+                            <td style="width: 49px;">&nbsp;</td>
+                            <td style="width: 68px;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                            <td style="width: 49px;">Day</td>
+                            <td style="width: 68px;">{{info?.Day}}</td>
+                            </tr>
+                            <tr>
+                            <td style="width: 49px;">Date:</td>
+                            <td style="width: 68px;">{{info?.JobDate}}</td>
+                            </tr>
+                            <tr>
+                            <td style="width: 49px;">TRUCK NO:</td>
+                            <td style="width: 68px;">{{info?.TruckNumber}}</td>
+                            </tr>
+                            <tr>
+                            <td style="width: 49px;">TRAILER TYPE:</td>
+                            <td style="width: 68px;">{{info?.TruckType}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            </td>
+                            <td>
+                                    <div *ngIf="subha ; else showPar">
+                                      <h1 style="text-align: center;">{{info?.BrokerDispatcherName}}</h1>
+                                      <h2 style="text-align: center;">General Hauling</h2>
+                                      <h2 style="text-align: center;">Cell:{{info?.BrokerDispatcherPhone}}</h2>
+                                      <p style="text-align: center;">{{info?.BrokerEmail}}</p>
+                                    </div>
+                                    <ng-template #showPar>
+                                    <h1 style="text-align: center;">{{info?.ParHauler}}</h1>
+                                    <h2 style="text-align: center;">General Hauling</h2>
+                                    <p style="text-align: center;">{{info?.ParHaulerPhone}}</p>
+                                    <p style="text-align: center;">{{info?.ParHaulerEmail}}</p>
+                                    </ng-template>
+                            
+                            </td>
+                            <td>
+                            <table style="margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td>
+                            <p style="text-align: center;">SHIPPING ORDER</p>
+                            <p style="text-align: center;">and FREIGHT BILL</p>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td style="text-align: center;">
+                            <p>TYPE OF TRUCK</p>
+                            <p>{{info?.TruckType}}</p>
+                            </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 688px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr >
+                            <div *ngIf="!subha" >
+                            <td style="text-align: left; width: 232px;">SUB HAULER</td>
+                            <td style="text-align: left; width: 392px;">{{info?.ParHauler}} - {{info?.OwnerCompanyName}}</td>
+                            </div>
+                            <td style="text-align: left; width: 231px;">P.O.No/JOB#</td>
+                            <td style="text-align: left; width: 513px;">{{info?.JobID}}</td>
+                            </tr>
+                            <tr>
+                            <td style="text-align: left; width: 232px;">PRIME CARRIER</td>
+                            <td style="text-align: left; width: 392px;">{{info?.BrokerDispatcherName}}</td>
+                            <td style="text-align: left; width: 231px;">CONSIGNEE</td>
+                            <td style="text-align: left; width: 513px;">{{info?.Foreman}}</td>
+                            </tr>
+                            <tr>
+                            <td style="text-align: left; width: 232px;">SHIPPER/CONTRACTOR</td>
+                            <td style="text-align: left; width: 392px;">{{info?.Contractor}}</td>
+                            <td style="text-align: left; width: 231px;">DESTINATION</td>
+                            <td style="text-align: left; width: 513px;">{{info?.LoadAt}}</td>
+                            </tr>
+                            <tr>
+                            <td style="text-align: left; width: 232px;">POINT OF ORIGIN</td>
+                            <td style="text-align: left; width: 392px;">{{info?.ArriveAt}}</td>
+                            <td style="text-align: left; width: 231px;">CITY</td>
+                            <td style="text-align: left; width: 513px;">{{info?.Dcity}}</td>
+                            </tr>
+                            <tr>
+                            <td style="text-align: left; width: 232px;">CITY</td>
+                            <td style="text-align: left; width: 392px;">{{info?.Ocity}}</td>
+                            <td style="text-align: left; width: 231px;">MANIFEST No.</td>
+                            <td style="text-align: left; width: 513px;">{{info?.ManifestNo}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 696px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td style="width: 374px; background-color: white; text-align: center;"><span style="color: black;">MATERIALS</span></td>
+                            <td style="background-color: white;"><span style="color: black;">LOADING</span></td>
+                            <td style="background-color: white;"><span style="color: black;">UNLOADING</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td style="text-align: center;">NO.</td>
+                            <td style="text-align: center;">SCALE TAG NO</td>
+                            <td style="text-align: center;">YARD OF WEIGHT</td>
+                            <td style="text-align: center;">TYPE OF MATERIAL</td>
+                            <td style="text-align: center;">TIME ARRIVE</td>
+                            <td style="text-align: center;">TIME LEAVE</td>
+                            <td style="text-align: center;">TIME ARRIVE</td>
+                            <td style="text-align: center;">TIME LEAVE</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr *ngFor="let item of tabs|async; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.ScaleTagID}}</td>
+                            <td>{{item.Weight}}</td>
+                            <td>{{item.Material}}</td>
+                            <td>{{item.LoadStart}}</td>
+                            <td>{{item.LoadEnd}}</td>
+                            <td>{{item.UnloadStart}}</td>
+                            <td>{{item.UnloadEnd}}</td>
+                            </tr>
+                            <tr >
+                              <td colspan="8">
+                                Notes:{{info?.notes}}
+                              </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr style="height: 23px;">
+                            <td style="height: 23px;">START {{info?.StartShiftTime}}</td>
+                            <td style="height: 23px;">STOP {{info?.EndShiftTime}}</td>
+                            <td style="height: 23px;">DEDUCT TIME</td>
+                            <td style="height: 23px;">NET TIME: {{info?.NetTime}} hours</td>
+                            <td style="height: 23px;">BRIDGEFARE </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td>DRIVER    <img src={{info?.DriverSignData}} height="50" width="100"> </td>
+                            <td>RECEIVED BY <img src={{info?.ForemanSignData}} height="50" width="100">  </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                            <tbody>
+                            <tr>
+                            <td>Customer responsible for (A) checking Type &amp; quality of material <span style="text-decoration: underline;">before</span> driver dumps load (B) Correct location of dumping (C) Overweight loads &amp; court fines (D) Safe access &amp; exit for truck (E) <span style="text-decoration: underline;">Firm level</span> ground for dumping (F) Collection Charges.</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                    
+                  </div>
+
+                    <div>
+                      <!-- <button mat-button matStepperPrevious>Back</button> -->
+                      <button mat-button matStepperNext>Accept</button>
+                      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    </div>
+                    </mat-step>
+
+                    <!-- driver and foreman sign off -->
+                    <mat-step [stepControl]="sixthFormGroup">
+                  <form [formGroup]="sixthFormGroup">
+                    <ng-template matStepLabel>Signature</ng-template>
+                   
+                    <div class="Center" *ngIf="!dSigned">
+                      Driver <input placeholder="trucker name" style="width: 100px" type="text" formControlName="driverName" > sign
+                      <!-- show driver signature -->
+                    </div>
+
+                    <!-- <div class="Center" *ngIf="!dSigned">
+                        Net Time<input placeholder="net time" type="text" formControlName="netTime">
+                    </div> -->
+
+                    <div *ngIf="driverSign">
+                        Driver: {{name}}
+                      </div>
+
+                    <div class="Center" *ngIf="driverSign">
+                    
+                    <img src={{driverSign}}>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="Center" *ngIf="dSigned&&!fSigned">
+                      Foreman<input  placeholder="Foreman Name" style="width: 100px" type="text" formControlName="foremanName" >
+                     
+                      <!-- show foreman signature -->
+                      
+                    </div>
+                    <div class="Center" *ngIf="dSigned&&!fSigned">
+                    Notes: <input  placeholder="Foreman notes" formControlName="foremanNotes">
+                    </div>
+                    <div class="Center" *ngIf="dSigned&&!fSigned">
+                      Foreman Email: <input placeholder="foreman email" type="text" formControlName="foremanEmail">
+                    </div>
+
+                    <div class="Center" *ngIf="dSigned&&!fSigned">
+                    <button (click)="openSignDialog()">open and sign</button>
+                    </div>    
+
+                    <div *ngIf="foremanSign">
+                        Foreman: {{info?.Foreman}}
+                      </div>
+
+
+                    <div class="Center" *ngIf="foremanSign">
+                        
+                    <img src={{foremanSign}}>
+                    </div>
+                    
+                    <!--hide when all complete-->
+                    <div class="Center" *ngIf="!(dSigned)">
+                    <mat-card>
+                    <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
+                        
+                    </signature-pad>
+                    </mat-card>
+                    </div>
+
+                    <!-- hide this afte all signed -->
+                    <div class="Center" *ngIf="!(dSigned)">
+                    <button (click)="clear()">clear</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button (click)="rewind()">undo</button>
+                    </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <!-- driver complete button -->
+                    <div class="Center" *ngIf="!dSigned">
+                      <button (click)="driverComplete()">Driver Complete</button>
+                    </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <!-- foreman complete button -->
+                    <div class="Center" *ngIf="dSigned&&!fSigned">
+                        <button (click)="foremanComplete()">Foreman Complete</button>
+                      </div>
+
+                    <div>
+                      <!-- <button mat-button matStepperPrevious>Back</button> -->
+                      <div *ngIf="dSigned&&fSigned">
+                      <button mat-button matStepperNext (click)="completeJob()">Next</button>
+                      </div>
+                    </div>
+                  </form>
+                    </mat-step>
+
+                  <!-- generate pdf  -->
+                <mat-step>
+                  <ng-template matStepLabel>Generate PDF</ng-template>
+                 
+                  <div class="scrolling-wrapper-flexbox">
+                      
+                      <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td>
+                          <table style="margin-left: auto; margin-right: auto; width: 121px;">
+                          <tbody>
+                          <tr>
+                          <td style="width: 49px;">&nbsp;</td>
+                          <td style="width: 68px;">&nbsp;</td>
+                          </tr>
+                          <tr>
+                          <td style="width: 49px;">Day</td>
+                          <td style="width: 68px;">{{info?.Day}}</td>
+                          </tr>
+                          <tr>
+                          <td style="width: 49px;">Date:</td>
+                          <td style="width: 68px;">{{info?.JobDate}}</td>
+                          </tr>
+                          <tr>
+                          <td style="width: 49px;">TRUCK NO:</td>
+                          <td style="width: 68px;">{{info?.TruckNumber}}</td>
+                          </tr>
+                          <tr>
+                          <td style="width: 49px;">TRAILER TYPE:</td>
+                          <td style="width: 68px;">{{info?.TruckType}}</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          </td>
+                          <td>
+                          <h1 style="text-align: center;">{{info?.OwnerCompanyName}}</h1>
+                          <h2 style="text-align: center;">General Hauling</h2>
+                          <h2 style="text-align: center;">Cell:{{info?.OwnerCompanyPhone}}</h2>
+                          <p style="text-align: center;">{{info?.OwnerCompanyEmail}}</p>
+                          </td>
+                          <td>
+                          <table style="margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td>
+                          <p style="text-align: center;">SHIPPING ORDER</p>
+                          <p style="text-align: center;">and FREIGHT BILL</p>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td style="text-align: center;">
+                          <p>TYPE OF TRUCK</p>
+                          <p>{{info?.TruckType}}</p>
+                          </td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          </td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 688px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <div *ngIf="!subha" >
+                          <td style="text-align: left; width: 232px;">SUB HAULER</td>
+                          <td style="text-align: left; width: 392px;">{{info?.ParHauler}} - {{info?.OwnerCompanyName}}</td>
+                          </div>
+                          <td style="text-align: left; width: 231px;">P.O.No/JOB#</td>
+                          <td style="text-align: left; width: 513px;">{{info?.JobID}}</td>
+                          </tr>
+                          <tr>
+                          <td style="text-align: left; width: 232px;">PRIME CARRIER</td>
+                          <td style="text-align: left; width: 392px;">{{info?.BrokerDispatcherName}}</td>
+                          <td style="text-align: left; width: 231px;">CONSIGNEE</td>
+                          <td style="text-align: left; width: 513px;">{{info?.Foreman}}</td>
+                          </tr>
+                          <tr>
+                          <td style="text-align: left; width: 232px;">SHIPPER/CONTRACTOR</td>
+                          <td style="text-align: left; width: 392px;">{{info?.Contractor}}</td>
+                          <td style="text-align: left; width: 231px;">DESTINATION</td>
+                          <td style="text-align: left; width: 513px;">{{info?.LoadAt}}</td>
+                          </tr>
+                          <tr>
+                          <td style="text-align: left; width: 232px;">POINT OF ORIGIN</td>
+                          <td style="text-align: left; width: 392px;">{{info?.ArriveAt}}</td>
+                          <td style="text-align: left; width: 231px;">CITY</td>
+                          <td style="text-align: left; width: 513px;">{{info?.Dcity}}</td>
+                          </tr>
+                          <tr>
+                          <td style="text-align: left; width: 232px;">CITY</td>
+                          <td style="text-align: left; width: 392px;">{{info?.Ocity}}</td>
+                          <td style="text-align: left; width: 231px;">MANIFEST No.</td>
+                          <td style="text-align: left; width: 513px;">{{info?.ManifestNo}}</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 696px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td style="width: 374px; background-color: white; text-align: center;"><span style="color: black;">MATERIALS</span></td>
+                          <td style="background-color: white;"><span style="color: black;">LOADING</span></td>
+                          <td style="background-color: white;"><span style="color: black;">UNLOADING</span></td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td style="text-align: center;">NO.</td>
+                          <td style="text-align: center;">SCALE TAG NO</td>
+                          <td style="text-align: center;">YARD OF WEIGHT</td>
+                          <td style="text-align: center;">TYPE OF MATERIAL</td>
+                          <td style="text-align: center;">TIME ARRIVE</td>
+                          <td style="text-align: center;">TIME LEAVE</td>
+                          <td style="text-align: center;">TIME ARRIVE</td>
+                          <td style="text-align: center;">TIME LEAVE</td>
+                          </tr>
+                          </tbody>
+                          <tbody>
+                          <tr *ngFor="let item of tabs|async; let i=index">
+                          <td>{{i+1}}</td>
+                          <td>{{item.ScaleTagID}}</td>
+                          <td>{{item.Weight}}</td>
+                          <td>{{item.Material}}</td>
+                          <td>{{item.LoadStart}}</td>
+                          <td>{{item.LoadEnd}}</td>
+                          <td>{{item.UnloadStart}}</td>
+                          <td>{{item.UnloadEnd}}</td>
+                          </tr>
+                          <tr >
+                          <td colspan="8">
+                          Notes:{{info?.notes}}
+                          </td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr style="height: 23px;">
+                          <td style="height: 23px;">START {{info?.StartShiftTime}}</td>
+                          <td style="height: 23px;">STOP {{info?.EndShiftTime}}</td>
+                          <td style="height: 23px;">DEDUCT TIME </td>
+                          <td style="height: 23px;">NET TIME {{info?.NetTime}} hours</td>
+                          <td style="height: 23px;">BRIDGEFARE</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td>DRIVER    <img src={{info?.DriverSignData}} height="50" width="100"> </td>
+                          <td>RECEIVED BY <img src={{info?.ForemanSignData}} height="50" width="100">  </td>
+                          </tr>
+                          <tr>
+                            <td colspan="8">
+                                Foreman notes:{{info?.ForemanNotes}}
+                            </td>  
+                          </tr>
+                          </tbody>
+                          </table>
+                          <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                          <tbody>
+                          <tr>
+                          <td>Customer responsible for (A) checking Type &amp; quality of material <span style="text-decoration: underline;">before</span> driver dumps load (B) Correct location of dumping (C) Overweight loads &amp; court fines (D) Safe access &amp; exit for truck (E) <span style="text-decoration: underline;">Firm level</span> ground for dumping (F) Collection Charges.</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                      
+                    </div>
+
+                  <!-- <mat-accordion>
+                  <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            print pdf
+                          </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <a target="_blank" [routerLink]="['/print',userId,contractor,jobId]">document page for print pdf file</a>
+                  </mat-expansion-panel>
+                  </mat-accordion> -->
+
+                  <div>
+                    <!-- <button mat-button matStepperPrevious>Back</button> -->
+                    <!-- <button mat-button matStepperNext>Accept</button> -->
+                    
+                  </div>
+                </mat-step>
+
+                  <!-- sending emails -->
+                <mat-step>
+                  <ng-template matStepLabel>Sending Emails</ng-template>
+                  <button mat-button [disabled]="disableButton" (click)="sendEmail()">sending emails<mat-spinner [diameter]="20" *ngIf="disableButton"></mat-spinner></button>
+
+                  <div>
+                    <!-- <button mat-button matStepperPrevious>Back</button> -->
+                    <!-- <button mat-button matStepperNext>Accept</button> -->
+                    
+                  </div>
+                </mat-step>
+
+
+        </mat-vertical-stepper>
+      
+            <div class="fabButton">
+            <button mat-fab (click)="openDialog()">Note</button>
+            </div>
+<!--pdf download form-->
+<!-- 
+<div class="Center">
+    <button (click)="download()">
+      Downlaod pdf file
+    </button>
+</div>
+<div>&nbsp;</div><div>&nbsp;</div> -->

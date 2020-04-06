@@ -1,0 +1,208 @@
+
+<div class="Center"> Create Job Page </div>
+<div class="Center">
+  <p>
+    Make sure all information in profile page are filled those are required!🚨
+  </p>
+</div>
+<div class="Center">
+      <p>
+        It is 👌 to leave blank if you don't have sertain information here 💯
+        </p>
+</div>
+
+<div class="scrolling-wrapper-flexbox">  
+    <form  [formGroup]="JobForm" (ngSubmit)="onSubmit(JobForm.value)">
+     
+      <table >
+        <tbody>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Contractor:
+        <div style="color:red;">(required. "/" is not allowed)</div>
+        </td> 
+        <td style="width: 100px;">
+          <input id="Contractor" matInput  type="text"  formControlName="Contractor"  >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Contractor Email:</td>
+        <td style="width: 100px;">
+          <input id="ContractorEmail" matInput  type="text"  formControlName="ContractorEmail"  >
+        </td>
+        </tr>
+              <!-- <tr style="width: 200px;">
+                <td colspan="2">
+                    If you are Sub Hauler/outSource
+                    <input type="checkbox" (change)="toggleEditable($event)">
+                </td>
+              </tr> -->
+
+              <tr *ngIf="false">
+                  <td style="width: 80px;">Sub Hauler</td>
+                  <td style="width: 100px;">
+                  <input disabled id="SubHauler" matInput type="text"  formControlName="SubHauler" >
+                  </td>
+              </tr>
+              <tr *ngIf="subHa">
+        <td style="width: 80px;">Parent Hauler(required)</td>
+        <td style="width: 100px;">
+        <input id="ParHauler" matInput type="text"  formControlName="ParHauler" >
+        </td>
+              </tr>
+              <tr *ngIf="subHa">
+            <td style="width: 80px;">Parent Hauler email</td>
+            <td style="width: 100px;">
+            <input id="ParHauler email" matInput type="text"  formControlName="ParHaulerEmail" >
+            </td>
+              </tr>
+                <tr *ngIf="subHa">
+                <td style="width: 80px;">Parent Hauler Phone</td>
+                <td style="width: 100px;">
+                <input id="ParHauler phone" matInput type="text"  formControlName="ParHaulerPhone" >
+                </td>
+                </tr> 
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Manifest No:</td>
+        <td style="width: 100px;">
+        <input id="ManifestNo" matInput type="text"  formControlName="ManifestNo" >
+        </td>
+        </tr>
+        <!-- <tr style="width: 200px;">
+        <td style="width: 100px;">
+          <div>Foreman/Contact/Consignee</div>
+          <div>(optional):</div>
+        </td>
+        <td style="width: 100px;">
+          <input id="Foreman" matInput type="text" formControlName="Foreman" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 100px;">Foreman Email(optional):</td>
+        <td style="width: 100px;">
+          <input id="ForemanEmail" matInput type="text" formControlName="ForemanEmail" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 100px;">Foreman Phone(optional):</td>
+        <td style="width: 100px;">
+            <input id="ForemanPhone" matInput type="number" formControlName="ForemanPhone" >
+        </td>
+        </tr> -->
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Broker Name:</td>
+        <td style="width: 100px;">
+            <input id="Broker" matInput type="text"  formControlName="BrokerName" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">BrokerPhone:</td>
+        <td style="width: 100px;">
+            <input id="BrokerPhone" matInput type="text"  formControlName="BrokerPhone" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">BrokerEmail:</td>
+        <td style="width: 100px;">
+            <input id="BrokerEmail" matInput type="text"  formControlName="BrokerEmail" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">JobID:</td>
+        <td style="width: 100px;">
+          <input id="JobID" matInput type="text"  formControlName="JobID" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Material:</td>
+        <td style="width: 100px;">
+            <input id="Job" matInput type="text"  formControlName="Job" >
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+          <td style="width: 80px;">Trucks:</td>
+          <td style="width: 100px;">
+              <input id="Trucks" matInput type="text"  formControlName="Trucks" >
+          </td>
+          </tr>
+        <tr style="width: 200px;">
+          <td style="width: 80px;">Pay Rate(load/hour)💵</td>
+          <td style="width: 100px;">
+              <input matInput type="text"  formControlName="Rate" >
+          </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">JobDate:
+          <div style="color:red;">(required)</div>
+        </td>
+        <td style="width: 100px;">
+            <mat-form-field style="width: 80px;">
+                <input matInput 
+                style="width: 80px;"
+                [ngModel]="date"
+                (ngModelChange)="date($event)" 
+                
+                [matDatepicker]="picker" 
+                placeholder="Choose a date" 
+                formControlName="JobDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>                 
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Day:</td>
+        <td style="width: 100px;">{{day}}</td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Arrive Time:
+          <div style="color:red;">(required)</div>
+        </td>
+        <td style="width: 100px;">
+            <input id="ArriveTime" matInput  type="text" formControlName="ArriveTime" >                    
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Point of Origin:
+          <div style="color:red;">(required)</div>
+        </td>
+        <td style="width: 100px;">
+            Point of Origin
+            <input id="ArriveAt"  type="text"  formControlName="ArriveAt" >
+            <br>
+            City 
+            <br>
+            <input id="ocity"  type="text"  formControlName="Ocity">
+        </td>
+        </tr>
+        <tr style="width: 200px;">
+        <td style="width: 80px;">Destination:
+          <div style="color:red;">(required)</div>
+        </td>
+        <td style="width: 100px;">
+            Destination
+            <input id="LoadAt"  type="text"  formControlName="LoadAt" >
+            <br>
+            City 
+            <br>
+            <input id="dcity"  type="text"  formControlName="Dcity">
+        </td>
+        </tr>      
+        <tr style="width: 200px;">
+          <td >
+              
+          </td>
+          <td style="width: 80px;"> 
+            <button type="submit">done</button>
+          </td>
+        </tr>
+        </tbody>
+        </table>
+                       <!--  <div class="Center">
+                          <label for="Times">
+                              Times:
+                          </label>
+                          <input id="Times"  type="text" formControlName="Times" required>
+                          
+                          </div> -->
+            </form>
+          </div>

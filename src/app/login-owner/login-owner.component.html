@@ -1,0 +1,17 @@
+
+<dt class="Center">
+
+<div *ngIf="afAuth.user | async as user; else showLogin2">
+
+    <div>         
+    <button type="button" (click)="signupOwner()" mat-raised-button>sign up as Broker/Owner/Operator</button>
+    </div>  
+
+</div>
+
+<ng-template #showLogin2>
+        <button mat-raised-button (click)="login()">login as owner</button>
+        </ng-template>
+
+</dt> 
+

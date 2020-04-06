@@ -1,0 +1,19 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field> -->
+  <div style="width:280px;height:400px; overflow-y: auto;">
+  <img style="width:267px;height:390px" [src]="data.diaImg">
+  cards: {{data.diaNumber}}
+  price: {{data.diaPrice}}
+  <p style="font-size: 1.2em;">desc: {{data.diaDesc}}</p>
+  </div >
+  
+  <div>
+      <a [routerLink]="['/addcard',data.diaId]" (click)="onNoClick()" >details</a>
+  </div>
+ <!--  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->

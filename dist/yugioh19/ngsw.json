@@ -1,0 +1,84 @@
+{
+  "configVersion": 1,
+  "timestamp": 1586152885888,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "codetutorial",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/5-es2015.e5a6a9183c76f9e07cc5.js",
+        "/5-es5.e5a6a9183c76f9e07cc5.js",
+        "/favicon.ico",
+        "/firebase-messaging-sw.js",
+        "/index.html",
+        "/main-es2015.bca5e546f91cf2645ac4.js",
+        "/main-es5.bca5e546f91cf2645ac4.js",
+        "/polyfills-es2015.2987770fde9daa1d8a2e.js",
+        "/polyfills-es5.fefa72e12b2a2d6ef7f2.js",
+        "/runtime-es2015.750a34eccb77db3131b3.js",
+        "/runtime-es5.750a34eccb77db3131b3.js",
+        "/styles.73d3d478726e1fbc8a15.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/5-es2015.e5a6a9183c76f9e07cc5.js": "9af445f8e68127a62330156f85b5d09e990a1598",
+    "/5-es5.e5a6a9183c76f9e07cc5.js": "0e4e6b7ffe9c3ac0492cb30f41ca0aed8ff46427",
+    "/assets/icons/icon-128x128.png": "4f12696352cee7b5e4af118219523e4a6cd4ece4",
+    "/assets/icons/icon-144x144.png": "2e72b3c656864ff5646deb83ee2e644f7790cdf4",
+    "/assets/icons/icon-152x152.png": "feac5c74776b522b671ea705e7310ed1fe89b249",
+    "/assets/icons/icon-192x192.png": "acb6dc68fbd412721b88afe6cf9118bce79fcb61",
+    "/assets/icons/icon-384x384.png": "6e16aeeff578fb6db30c8f6b9f8fce6da480a3af",
+    "/assets/icons/icon-512x512.png": "ff93f15b11ed1603488a6cfe3a87c107b5a17126",
+    "/assets/icons/icon-72x72.png": "c072b86a93af6dd8882559505ab169e98cf42fcb",
+    "/assets/icons/icon-96x96.png": "935f731b8344146a317ecd9f144c8da91c389e7f",
+    "/favicon.ico": "4f3177e2f0d7c0da99a157b6eb67b4977b6a230d",
+    "/firebase-messaging-sw.js": "e29773f982c3cf6bb5454f117b481480ad658649",
+    "/index.html": "34365fc00538f9e828fac73f626180c635eb5a50",
+    "/main-es2015.bca5e546f91cf2645ac4.js": "59b900fc2a4f0175c4b0d5ef46b8351ff6ba128c",
+    "/main-es5.bca5e546f91cf2645ac4.js": "1ba6f06347c8aadf45adb3268d8faa62c8b6f371",
+    "/polyfills-es2015.2987770fde9daa1d8a2e.js": "cf5cbfa9134716054fb479ab21362146cdf1f2ff",
+    "/polyfills-es5.fefa72e12b2a2d6ef7f2.js": "be7220c312d2c09c05c0e8aad50c5ec13d0c4c1f",
+    "/runtime-es2015.750a34eccb77db3131b3.js": "80ec58a1807e13f0177640a2811682b1b92fe86c",
+    "/runtime-es5.750a34eccb77db3131b3.js": "9f378a9094383eb38d87ab813fb52edc972a8be1",
+    "/styles.73d3d478726e1fbc8a15.css": "6a5fc021b7b460b10cf7dfb6e1b4ee0a7da7651c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}

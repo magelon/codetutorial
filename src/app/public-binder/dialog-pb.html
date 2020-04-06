@@ -1,0 +1,13 @@
+<div style="width:280px;height:400px; overflow-y: auto;">
+    <img style="width:267px;height:390px" [src]="data.diaImg">
+    cards: {{data.diaNumber}}
+    name: {{data.diaName}}
+    <p style="font-size: 1.2em;">desc: {{data.diaDesc}}</p>  
+    </div >
+    <div>
+        <a [routerLink]="['/addcard',data.diaId]" (click)="onNoClick()" >details</a>
+  
+       
+          <button mat-button (click)="addToCart()" [mat-dialog-close]="data.diaAddId">Add To Cart</button>
+
+    </div>

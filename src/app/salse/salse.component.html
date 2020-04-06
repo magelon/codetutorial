@@ -1,0 +1,27 @@
+<div *ngIf="affiliatelink">
+<p>
+    this is your affiliatelink
+    use it to help people get great deal and earn you some $
+</p>
+    {{affiliatelink}}
+</div>
+
+<div *ngIf="affiliatelink">
+<button (click)="copyToClipboard(affiliatelink)"> 
+    copy
+</button>
+</div>
+
+<div *ngIf="!affiliatelink">
+<p>create a affiliatelink help people get great deal and earn $</p>
+<p>Pick your affiliate name in affiliatelink</p>
+<input  type="text" [(ngModel)]="checkupV"> <button mat-raised-button (click)="checkup()">check</button>
+<div *ngIf="checkout">{{result}}</div>
+<div *ngIf="!checkout">
+    {{result}}
+</div>
+<div *ngIf="!checkout">
+    <button (click)="regist()">regist affiliate</button>
+</div>
+
+</div>

@@ -1,0 +1,7 @@
+<mat-list *ngFor="let folder of deckCollections">
+        <mat-list-item>
+            <a [routerLink]="['/deckdetail',folder]">{{folder}}</a>
+            </mat-list-item>
+        <mat-divider></mat-divider>
+    
+  </mat-list>

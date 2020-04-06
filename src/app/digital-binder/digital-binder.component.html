@@ -1,0 +1,84 @@
+<div>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</div>
+<div>
+<!-- <th  *ngFor="let number of pageArr ; let i = index">
+   <button (click)="changingPage(i+1)"></button>
+    {{i+1}} -->
+
+        <div class="Center" >
+        <div id="pie" ></div>
+        </div>
+
+    totally {{pageArr?.length}}pages totally value:{{networth}}$
+
+<div>
+        <button (click)="changingPage(pagenumber)">go to page</button>
+
+        <input type="number" [(ngModel)]="pagenumber">
+</div>
+
+  
+<div class="Center" >
+     <input type="string" [(ngModel)]="cardSearchNam">
+    <button (click)="cardSearch(cardSearchNam)">search by name</button>
+</div>
+
+    <div class="Center" >
+    <input type="string" [(ngModel)]="cardSearchTyp">
+    <button (click)="typeSearch(cardSearchTyp)">search by type</button>
+</div>
+
+    <div class="Center" >
+    <input type="string" [(ngModel)]="cardSearchAttr">
+    <button (click)="attrSearch(cardSearchAttr)">search by attribute</button>
+</div>
+
+    <div class="Center" >
+    <input type="string" [(ngModel)]="cardSearchRace">
+    <button (click)="raceSearch(cardSearchRace)">search by race</button>
+</div>
+
+        <mat-grid-list cols="3" >
+            <mat-grid-tile
+               *ngFor="let item of DisplyCollections"
+                >
+                
+               <!-- <div>
+                <h1>Price: {{item.cardPrice}}</h1>
+                <h1>Amount: {{item.cardAmount}}</h1>
+                    </div> -->
+                <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc)">
+                    <div *ngIf="item">
+                    <img [src]="item.cardImgUrl">
+                    </div>
+                </button>
+            
+            </mat-grid-tile>
+          </mat-grid-list>
+        
+    
+
+        <div class="Center">
+            <button (click)="changingPage(pagenumber-1)"><-</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button (click)="changingPage(pagenumber+1)">-></button>
+    
+        </div>
+
+ 
+</div>
+
+    
+
+    <!-- <div *ngFor="let item of DisplyCollections  ">
+       
+           <img [src]="item.cardImgUrl">
+           <div>
+
+           </div>
+           <h1>Price: {{item.cardPrice}}</h1>
+           <h1>Amount: {{item.cardAmount}}</h1>
+           <a [routerLink]="['/addcard',item.cardId]">details</a>
+        
+        </div> -->

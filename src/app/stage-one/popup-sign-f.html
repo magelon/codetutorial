@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Foreman Signature</h1>
+
+<div mat-dialog-content>
+  
+<signature-pad  [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
+                        
+</signature-pad>
+
+</div>
+
+<div class="Center">
+    <button (click)="clear()">clear</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="rewind()">undo</button>
+    </div>
+<div mat-dialog-actions>
+  
+  <button [mat-dialog-close]="signfData" cdkFocusInitial>Ok</button>
+</div>

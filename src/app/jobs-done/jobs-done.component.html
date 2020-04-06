@@ -1,0 +1,96 @@
+<div>&nbsp;</div>
+<div class="Center">
+
+<div *ngIf="role=='trucker'">
+
+        <form [formGroup]="searchFormGroup">
+                <div>
+                        <input type="number" placeholder="year" formControlName="year">
+                </div>
+               
+                <div>
+                        <input type="number" placeholder="month" formControlName="month">
+                        &nbsp;<button (click)="searchYM()">search by month</button>
+                </div>
+                
+                <div>
+                        <input type="number" placeholder="day of the month" formControlName="date">
+                        &nbsp;<button (click)="search()">search date</button>
+                </div>
+                
+        </form>
+
+        <div>&nbsp;</div>
+
+       
+
+        <div *ngIf="truckerjobcount==0">
+            0 job in record 😑
+        </div>
+
+    <div *ngIf="truckerjobcount!=0">
+
+    <ul *ngFor="let item of contractorsWithJobBlock  ">
+        <li > 
+            <a [routerLink]="['/print',uid,item.contractor,item.jobId]">
+                Contractor: {{item.contractor}},
+                Date: {{item.jobCount}}
+               
+            </a>
+            <ng-container *ngIf="item.driver">
+                SubHauler:{{item.driver}}
+            </ng-container>
+        </li>
+    </ul>
+
+</div>
+
+<div>
+        <a [routerLink]="['/truckerCreateJob']"><button>New Tag</button></a>
+</div>
+
+</div>
+
+
+<div *ngIf="role=='owner'">
+        <div *ngIf="ownerjobcount==0">
+            0 job in record 😑
+        </div>
+        <div *ngIf="ownerjobcount!=0">
+
+                <ul>
+                        <li *ngFor="let recipient of ownerMap | keyvalue">
+                            {{recipient.key}}
+                            <div></div>
+                                <ng-container *ngFor="let l of recipient.value">
+                                        <div>
+                                        <a mat-list-item [routerLink]="['/print',l.driverId,l.contractor,l.jobUid]">
+                                            Contractor: {{l.contractor}},
+                                            Owner: {{l.owner}},
+                                            Date: {{l.date}},
+                                                                                
+                                        </a>
+                                        <ng-container *ngIf="l.subHauler">
+                                            SubHauler:{{l.subHauler}}
+                                        </ng-container>
+                                       
+                                        </div>
+                                </ng-container>
+                                
+                        </li>
+                    </ul>
+
+         <!-- <ul *ngFor="let item of contractorsWithJobBlock  ">
+        <li > 
+            <a [routerLink]="['/print',item.driver,item.contractor,item.jobId]">
+                    Date: {{item.jobCount}},
+                    Contractor: {{item.contractor}},
+            </a>
+        </li>
+        </ul>  -->
+
+        </div>
+</div>
+</div>
+
+

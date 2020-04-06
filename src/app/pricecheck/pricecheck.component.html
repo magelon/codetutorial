@@ -1,0 +1,145 @@
+
+
+<p class="Center">Card id:</p>
+
+<form class="example-form Center">
+       <mat-form-field class="example-full-width"> 
+         <input type="text"  matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="cardId" >
+         <mat-autocomplete #auto="matAutocomplete">
+               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+             {{option}}
+           </mat-option>
+         </mat-autocomplete>
+       </mat-form-field>
+     </form>
+
+     <!-- *ngIf="previewButton" -->
+     <div class="Center" >
+       <button (click)="preview()">preview</button>
+     </div>
+
+<div class="Center">
+ <!-- <img [src]="Cardpreview"> -->
+ <img style="width:267px;height:390px" [src]="profileUrl | async"/>
+ 
+</div>
+
+<div class="Center" *ngIf="cardDesc">
+{{cardDesc}}
+</div>
+
+<div class="Center" >
+<div id="tester" style="width:400px;height:250px;"></div>
+</div>
+
+<!-- <div class="Center">
+ <h1>{{profileUrl|async}}</h1>
+</div> -->
+
+<div class="Center" *ngIf="currentNumberOfCards; else showdonthave">
+ <h1>cardAmount:{{currentNumberOfCards}}</h1>
+</div>
+
+ <!-- <div class="Center" *ngIf="addButton">
+   <button (click)="addCard()">add card <i *ngIf="updateSuccess" class="material-icons">
+     done
+     </i>
+   </button>
+ </div> -->
+
+
+ <ng-template #showdonthave >
+     <div class="Center">
+       dont have any
+     </div>
+ </ng-template>
+
+ <!-- <div class="Center" *ngFor="let item of cardSet; let i = index">
+     <button>{{item.set_name}}</button>
+     
+     <button (click)="setPlusOne(i)" >+</button> &nbsp; <div *ngIf="setNumberArray"> {{setNumberArray[i]}}</div> &nbsp; <button (click)="setMinusOne(i)" >-</button>
+   </div>
+
+     <div>&nbsp;</div>
+
+
+
+     <div class="Center" *ngIf="currentNumberOfCards">
+     <button (click)="plusOne()">+</button> &nbsp; &nbsp; &nbsp;<button (click)="minusOne()">-</button>
+     </div> -->
+
+<p class="Center">Name:</p>
+
+<div class="Center">
+<input type="text" [(ngModel)]="cardName" disabled />
+</div>
+
+<!-- <p class="Center">Set:</p>
+<div class="Center">
+<input type="text" [(ngModel)]="cardSet" />
+</div>
+
+<p class="Center">Attribute:</p>
+<div class="Center">
+<input type="text" [(ngModel)]="cardAttribute" />
+</div>
+
+<p class="Center">Type:</p>
+<div class="Center">
+<input type="text" [(ngModel)]="cardType" />
+</div> -->
+
+<p class="Center">TCG_Price:{{oldPrice}}</p>
+<div class="Center">
+<input  type="number" [(ngModel)]="cardPrice" disabled />
+</div>
+
+<!-- <div class="Center" *ngIf="currentNumberOfCards">
+ <button (click)="updateCInfo()">update card price
+     <i *ngIf="infoupdateSuccess" class="material-icons">
+     done
+     </i>
+ </button>
+</div> -->
+
+
+
+ <div *ngIf="uploadAu">
+
+ <p class="Center">upload card img</p>
+ <!-- <div class="Center">
+ <input type="file" (change)="uploadFile($event)" />
+ </div> -->
+ 
+ <div class="Center">
+     {{ uploadPercent | async }}
+ </div>
+ 
+ <img [src]="downloadURL|async">
+ <!-- <p [href]="downloadURL | async">{{ downloadURL | async }}</p> -->
+ <h1>{{ downloadURL|async }}</h1>
+ 
+  <!-- <div *ngIf="downloadURL">
+     
+ <button (click)="copyToClipboard(downloadURL)"> 
+   copy
+ </button>
+ </div>  -->
+ 
+ <!-- <p class="Center">cardImgUrl:</p>
+ <div class="Center">
+ <input  type="text" [(ngModel)]="cardImgUrl" />
+ </div> -->
+  
+ </div>
+
+ <!-- <div *ngIf="uploadAu" class="Center">
+   <button (click)="updateAllAnimation()">
+   update all
+   </button>
+ </div> -->
+ 
+   <div *ngIf="uploadAu" class="Center">
+   {{barPercent}}%
+   <mat-progress-bar mode="buffer" [value]="barPercent"></mat-progress-bar>
+ </div>

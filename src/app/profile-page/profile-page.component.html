@@ -1,0 +1,238 @@
+
+<div class="Center">{{role}} Profile</div>
+<div class="Center">
+<mat-card class="example-card" *ngIf="afAuth.user|async as user">
+        <mat-card-header>
+                <div mat-card-avatar class="example-header-image"
+                [ngStyle]="{ 'background-image': 'url(' + pic + ')'}"
+                ></div>
+          <mat-card-title>
+              
+              <div *ngIf="role=='trucker'">
+                    Wellcome back!👋 {{info?.DriverName}}
+              </div>
+
+            <div *ngIf="role=='owner'">
+                    Wellcome back!👋 {{info?.OwnerName}}
+            </div>
+            </mat-card-title>
+          <mat-card-subtitle> 
+
+          </mat-card-subtitle>
+          
+        </mat-card-header>       
+          
+        <mat-card-content>
+
+            <div *ngIf="role=='owner'">
+                
+                <p>OwnerCompanyName: {{info?.OwnerCompanyName}}</p>
+                
+                <p>OwnerCompanyPhone: {{info?.OwnerCompanyPhone}}</p>
+               
+                <p>OwnerCompanyEmail: {{info?.OwnerCompanyEmail}}</p>
+
+            </div>
+
+            <div  *ngIf="role=='trucker'">
+
+                    <table >
+                            <tbody>
+                            <tr>
+                            <td>
+                                Employer:
+                            </td> 
+                            <td>
+                                    {{info?.Employer}}
+                            </td>
+                            </tr>
+                           
+                            <tr>
+                            <td>
+                                    EmployerPhone:
+                            </td> 
+                            <td>
+                                    {{info?.EmployerPhone}}
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>
+                                    EmployerEmail:
+                            </td> 
+                            <td>
+                                    {{info?.EmployerEmail}}
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>
+                                    Phone:
+                            </td> 
+                            <td>
+                                    {{info?.Phone}}
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>
+                                    Email:
+                            </td> 
+                            <td>
+                                    {{info?.Email}}
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>
+                                    Address:
+                            </td> 
+                            <td>
+                                    {{info?.Address}}
+                            </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <a routerLink="/signup">
+                <button mat-raised-button>
+                UPDATE
+                <i class="material-icons">
+                edit
+                </i>
+                </button>
+            </a>
+           
+        </mat-card-actions>
+</mat-card>
+</div>     
+
+<div>
+ <a routerLink="/salse">          
+ create affiliate link 
+ </a>
+</div>
+
+<!-- <div class="Center">{{role}} Profile Page</div>
+<div>  &nbsp;</div>
+
+<div class="Center" *ngIf="info.DriverName">
+        
+        Wellcome back! {{info.DriverName}}
+        
+    </div>
+<div class="Center" *ngIf="info.OwnerName">
+    <h3>
+    Wellcome back! {{info.OwnerName}}
+    </h3>
+</div>
+
+<div>  &nbsp;</div> -->
+
+<!-- <div class="Center" *ngIf="info.OwnerName">
+        <p>OwnerName: {{info.OwnerName}}</p>
+        </div> -->
+
+       <!--  <div class="Center" *ngIf="info.OwnerCompanyName">
+                <p>OwnerCompanyName: {{info.OwnerCompanyName}}</p>
+                </div>
+        
+                <div class="Center" *ngIf="info.OwnerCompanyPhone">
+                <p>OwnerCompanyPhone: {{info.OwnerCompanyPhone}}</p>
+                </div>
+                
+                    <div class="Center" *ngIf="info.OwnerCompanyEmail">
+                    <p>OwnerCompanyEmail: {{info.OwnerCompanyEmail}}</p>
+                    </div> -->
+
+<!-- <div class="Center" *ngIf="info.DriverName">
+    <p>DriverName: {{info.DriverName}}</p>
+    </div> -->
+    <!-- 
+    <div class="Center" *ngIf="info.Employer">
+        <p>Employer: {{info.Employer}}</p>
+        </div>
+        
+            <div class="Center" *ngIf="info.Phone">
+            <p>Phone: {{info.Phone}}</p>
+            </div>
+            
+                <div class="Center" *ngIf="info.Email">
+                <p>Email: {{info.Email}}</p>
+                </div>
+                
+                <div class="Center" *ngIf="info.Address">
+                <p>Address: {{info.Address}}</p>
+                </div> -->
+
+             <!-- broker informations -->
+            <!--  <div class="Center" *ngIf="info.BrokerDispatcherName">
+                 <p>BrokerDispatcherName: {{info.BrokerDispatcherName}}</p>
+             </div>
+        
+             <div class="Center" *ngIf="info.BrokerDispatcherPhone">
+             <p>BrokerDispatcherPhone: {{info.BrokerDispatcherPhone}}</p>
+             </div>
+             
+             <div class="Center" *ngIf="info.BrokerDispatcherEmail">
+             <p>BrokerDispatcherEmail: {{info.BrokerDispatcherEmail}}</p>
+             </div>
+                 
+             <div>  &nbsp;</div> -->
+
+
+<!--         <div class="Center">
+        <a [routerLink]="['/signup']" >
+        <button type="button" class="btn btn-primary btn-lg" >Update Profile</button>
+        </a>
+        </div>
+
+        <div>  &nbsp;</div>
+
+        <div class="Center"  *ngIf="role=='owner'">
+    <a [routerLink]="['/createJob']" >
+        <button type="button" class="btn btn-primary btn-lg">Create Jobs</button>
+       </a>
+        </div>
+
+        <div>  &nbsp;</div>                     
+        <div class="Center" *ngIf="role=='owner'">
+                        <a [routerLink]="['/Jobs']"> 
+                        <button>view jobs you created</button>
+                        </a> 
+        </div>  
+
+        <div>  &nbsp;</div>
+        <div class="Center"  >
+                
+                <button (click)="onGoing()">Jobs you are working on</button>
+              
+                
+        </div>
+        <div>  &nbsp;</div>
+        <div class="Center"  >
+          
+            <button (click)="jobDone()">Jobs you finished(statement)</button>
+         
+        </div> 
+        <div>  &nbsp;</div>  -->
+
+        <!-- <div class="Center" >
+              
+            <div *ngIf="role=='owner'">
+                    <a [routerLink]="['/profile/trucker']">
+                        <button>change role to trucker</button>
+                        </a>
+            </div> 
+            
+            <div *ngIf="role=='owner'">
+                    <a [routerLink]="['/profile/owner']">
+                        <button>change role to owner</button>
+                        </a>
+            </div>
+        </div> -->

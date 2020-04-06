@@ -1,0 +1,205 @@
+
+<!-- native animation -->
+
+<!-- <mat-card class="example-card" 
+[@cardAnimator]="animationState" 
+(@cardAnimator.done)="resetAnimationState()"
+(swipeleft)="startAnimation('slideOutLeft')"
+(swiperight)="startAnimation('zoomOutRight')"
+(swipeup)="startAnimation('rotateOutUpRight')"
+(swipedown)="startAnimation('flipOutY')">
+
+<mat-card-content>
+<img mat-card-image src="https://angular.io/assets/images/logos/angular/angular.svg">
+
+<p>
+Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop.
+</p>
+</mat-card-content>
+<mat-card-actions>
+<button mat-raised-button color="primary" (tap)="startAnimation('wobble')">WOBBLE</button>
+<button mat-raised-button color="primary" (tap)="startAnimation('swing')">SWING</button>
+
+<h5>Custom Events</h5>
+<button hammertime mat-raised-button color="accent" (doubleTap)="startAnimation('jello')">JELLO (doubleTap)</button>
+</mat-card-actions>
+</mat-card> -->
+
+<!-- [style.width.px]="width"
+[style.height.px]="height" -->
+
+
+<div class="example-container" 
+[class.example-is-mobile]="mobileQuery.matches" >
+ 
+  <mat-sidenav-container
+   class="example-sidenav-container"
+   [style.marginTop.px]="mobileQuery.matches ? 0 : 0"> 
+    
+  <!--   snav mode can be 'side' -->
+   <mat-sidenav
+    #sidenav mode="side"  
+    (opened)="open()"
+    (closed)="close()"
+    #snav [mode]="mobileQuery.matches ? 'over' : 'over'"
+    [fixedInViewport]="mobileQuery.matches" fixedTopGap="0">
+
+    <mat-nav-list>
+
+        <a mat-list-item >
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon> </button>
+        <h2 style="margin-left: 30px;">Yugioh19</h2>
+        </a>
+
+        <mat-divider></mat-divider>
+
+    <div  *ngIf="afAuth.user|async as user; else showLogin2" >
+
+    <div *ngIf="role">
+    <a mat-list-item >Profile</a>  
+    <a mat-list-item routerLink="/profile" (click)="sidenav.close()">
+      <i class="material-icons">
+          account_circle
+          </i>
+          Profile Card</a>
+    <!-- <a mat-list-item routerLink="/signup" (click)="sidenav.close()" >
+      <i class="material-icons">
+          assignment_late
+          </i>
+      Update Profile</a> -->
+    
+    <div *ngIf="role=='owner'">
+    <mat-divider></mat-divider>
+    <a mat-list-item>Owner</a>
+    <a mat-list-item routerLink="/createJob" (click)="sidenav.close()" >
+      <i class="material-icons">
+          assignment
+          </i>
+          Create New Job</a>
+    <a mat-list-item routerLink="/Jobs" (click)="sidenav.close()" >
+      <i class="material-icons">
+          class
+          </i>
+          Assign Truckers</a>
+    <a mat-list-item routerLink="/jobsDone/owner" (click)="sidenav.close()" >
+            <i class="material-icons">
+                history
+                </i>
+            Jobs History For owner
+    </a>
+    </div> 
+    <mat-divider></mat-divider>
+    <!-- should be hide if you already subscribed -->
+    <div *ngIf="!paid">
+    <a mat-list-item (click)="subscribe()">(subscription required,pay with debit card only)</a>
+    logout then login,after payment make sure you get the subscription service
+    </div>
+    <a mat-list-item class="disable">Trucker</a>
+
+    <a mat-list-item routerLink="/truckerCreateJob" (click)="sidenav.close()" >
+      <i class="material-icons">
+          assignment
+          </i>
+          New Tag
+        </a>
+
+    <a mat-list-item (click)="onGoing()" (click)="sidenav.close()" >
+        <i class="material-icons">
+            work
+            </i>
+            Last Tag
+          </a>
+    <a mat-list-item (click)="jobDone()" (click)="sidenav.close()" >
+        <i class="material-icons">
+            history
+            </i>
+         Tag History
+    </a>
+      <!-- <a mat-list-item>
+      <span>
+          (comming soon)
+      </span>
+      </a>
+    <a mat-list-item>
+            <i class="material-icons">
+            view_list
+            </i>
+            Statement</a> -->   
+           
+    </div>
+
+    <a mat-list-item [routerLink]="['/addcard',65741786]" (click)="sidenav.close()">Add New Cards</a>
+    <a mat-list-item routerLink="/binder" (click)="sidenav.close()">Digital Binder</a>
+    <a mat-list-item routerLink="/cfs" (click)="sidenav.close()">3+</a>
+    <a mat-list-item routerLink="/deckbuilder" (click)="sidenav.close()">Deck Builder</a>
+    <a mat-list-item routerLink="/decklist" (click)="sidenav.close()">Deck Lists</a>
+    <a mat-list-item routerLink="/pick" (click)="sidenav.close()">Random</a>
+    <a mat-list-item routerLink="/yourshop" (click)="sidenav.close()">Your Shop</a>
+
+    <mat-divider></mat-divider>
+
+    <a mat-list-item routerLink="/giveaways" (click)="sidenav.close()">
+      <i class="material-icons">
+        ondemand_video
+          </i>
+          <font color="red">
+            Youtube Giveaways
+          </font>
+     
+  </a> 
+
+    <a mat-list-item routerLink="/setting" (click)="sidenav.close()">
+        <i class="material-icons">
+            settings
+            </i>
+      Settings
+    </a> 
+
+    
+
+    <a mat-list-item (click)="logout()" (click)="sidenav.close()">Logout</a>
+
+    </div>
+    
+    <ng-template #showLogin2>
+    <!-- <a mat-list-item (click)="login()">Login</a> -->
+    </ng-template>
+
+    </mat-nav-list>
+
+    </mat-sidenav>
+     
+   <mat-sidenav-content>
+      <mat-toolbar class="example-toolbar">
+          <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+          <h1 class="example-app-name">Yugioh19</h1>
+          
+          <span class = "filler"></span>
+          <div  *ngIf="afAuth.user|async as user; else showLogin" >
+            
+          </div>
+          <ng-template #showLogin>
+            <a mat-list-item routerLink="/emaillogin">Login</a>
+            &nbsp; &nbsp;
+            <a mat-list-item routerLink="/register">Register</a>
+          </ng-template>
+
+          <!--<span>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          </span>-->
+           
+        </mat-toolbar>
+
+        <div [style.marginTop.px]="60"></div>
+       
+      <router-outlet></router-outlet>
+      
+    </mat-sidenav-content> 
+ 
+  </mat-sidenav-container>
+   
+
+
+</div>
+
+

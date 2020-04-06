@@ -1,0 +1,81 @@
+
+<div *ngIf="afAuth.user | async as user; else showLogin2">
+    
+   
+   <!--  <ul>
+        <li *ngFor="let item of items | async">
+           {{ item | json }}
+        </li>
+      </ul>
+ -->
+    
+ <!--   
+    <div *ngIf="!paid">
+        <div class="Center">
+        <a href="https://truckproject-b9adc.firebaseapp.com/pay.html"> <button>subscribe</button> </a>
+        </div>
+    </div> -->
+
+    
+
+    <div  class="Center">Signing Up As:</div>
+
+        <dl >
+           <!--  <dt class="Center">
+                <a [routerLink]="['/signup','broker']" >
+                 <button type="button" class="btn btn-primary btn-lg">Broker/Dispatcher</button>
+                </a>
+                </dt>
+            <dd>  &nbsp;</dd> -->
+            <!-- <dt class="Center">
+                    
+                <button type="button" (click)="signupOwner()" mat-raised-button>Owner/Operator</button>
+            
+            </dt>  -->
+                    
+                <dd> &nbsp; </dd>
+                <dt class="Center">
+                    <!-- <a [routerLink]="['/signup','trucker']" > -->
+                 <button type="button" (click)="signupTrucker()" mat-raised-button >Sign Up As Trucker/Driver</button>
+                <!-- </a> -->
+                </dt>
+                    
+                 <dd>  &nbsp;</dd>
+          </dl>
+
+        </div>
+    
+    
+     <ng-template   #showLogin2>
+          <!-- <a [routerLink]="['/login']" class="button fancy-button"><i class="material-icons">account_circle</i>Sign In</a> -->
+          <!-- <div class="Center" style="font-size:100px">
+                  🚛
+                </div>
+
+          <div class="Center" style="font-size:15px">
+              
+              Online tag generation for truckers by truckers
+           
+            </div>
+            <div class="Center">
+            <p >
+                    ✅Never lose a tag!</p>
+            </div>
+            <div class="Center">
+            <p >
+                    ✅Never have to hand deliver a tag!</p>
+            </div>
+            <div class="Center">
+            <p >
+                    ✅Never have unreadable handwriting!</p>
+            </div>
+
+          <dl class="Center">
+          <button mat-raised-button  (click)="login()">Login using google account</button>
+          </dl>
+              -->
+        </ng-template>
+        
+       
+
+       

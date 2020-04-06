@@ -1,0 +1,62 @@
+<a [routerLink]="['']">
+    <h1>DayDaCo</h1>
+  </a>
+
+    <div class="example-container" 
+    [style.width.px]="width"
+    [style.height.px]="height"
+    [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+      <mat-toolbar color="white" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name">DayDaCo</h1>
+
+        <div style="float:right; margin-left:70px;">
+     
+            <div  *ngIf="afAuth.user|async as user; else showLogin2" >
+                <button  mat-button (click)="logout()">Logout</button>
+            </div>
+            <ng-template #showLogin2>
+                <button  mat-button (click)="login()">Login</button> 
+              </ng-template>
+         </div>
+      </mat-toolbar>
+      
+      <mat-sidenav-container
+       class="example-sidenav-container"
+       [style.marginTop.px]="mobileQuery.matches ? 56 : 0"> 
+        
+       <mat-sidenav
+        #sidenav mode="side"  (opened)="open()"
+        (closed)="close()"
+        #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+        [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+          <mat-nav-list *ngIf="afAuth.user|async as user">
+
+              <a mat-list-item routerLink="/profile">Profile</a>
+              <a mat-list-item routerLink="/signup">Update Profile</a>
+              
+              <div *ngIf="role=='owner'">
+              <mat-divider></mat-divider>
+              <a mat-list-item routerLink="/createJob">Create New Job</a>
+              <a mat-list-item routerLink="/Jobs">Jobs Created</a>
+              </div> 
+              <mat-divider></mat-divider>
+              <a mat-list-item (click)="onGoing()">On Going Job</a>
+              <a mat-list-item routerLink=".">Statement</a>
+
+          </mat-nav-list>
+        </mat-sidenav>
+    
+         
+       <mat-sidenav-content [style.opacity]="opacity">
+          <!-- <p *ngFor="let content of fillerContent">{{content}}</p>  -->
+        </mat-sidenav-content> 
+     
+      </mat-sidenav-container>
+      
+      
+    </div>
+      
+      <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
+      

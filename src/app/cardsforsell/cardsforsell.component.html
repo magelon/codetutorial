@@ -1,0 +1,62 @@
+
+
+
+<div>
+<!-- <th  *ngFor="let number of pageArr ; let i = index"> -->
+
+   totally:{{cardsSize}} value:{{cardV}} totally {{pageArr?.length}}pages
+
+    <div>
+            <button (click)="changingPage(pagenumber)">go to page</button>
+
+            <input type="number" [(ngModel)]="pagenumber">
+    </div>
+    
+    <input type="string" [(ngModel)]="cardSearchName">
+    <button (click)="cardSearch(cardSearchName)">search by name</button>
+
+    <!-- <button (click)="trendSearch()">search by trendlist</button> -->
+
+    <button (click)="addAllToYourMarket()">add all to market</button>
+
+            <!-- <div  *ngFor="let item of DisplyCollections  ">
+               
+                   <img style="width:300px;height:400px" [src]="item.cardImgUrl">
+                   
+                   <h1>Price: {{item.cardPrice}}</h1>
+                   <h1>Amount: {{item.cardAmount}}</h1>
+                   <button>add to cart</button>
+                
+            </div> -->
+        
+          <!-- *ngFor="let tile of tiles"
+                    [colspan]="tile.cols"
+                    [rowspan]="tile.rows"
+                    [style.background]="tile.color"
+                
+                -->
+
+            <mat-grid-list cols="3" >
+                <mat-grid-tile
+                   *ngFor="let item of DisplyCollections"
+                    >
+                    
+                   <!-- <div>
+                    <h1>Price: {{item.cardPrice}}</h1>
+                    <h1>Amount: {{item.cardAmount}}</h1>
+                        </div> -->
+                    <button mat-raised-button (click)="openDialog(item.cardImgUrl,item.cardId,item.cardAmount,item.cardPrice,item.cardDesc,item.list)">
+                        <img [src]="item.cardImgUrl">
+                    </button>
+                
+                </mat-grid-tile>
+              </mat-grid-list>
+              
+</div>
+
+<div class="Center">
+        <button (click)="changingPage(pagenumber-1)"><-</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button (click)="changingPage(pagenumber+1)">-></button>
+
+</div>

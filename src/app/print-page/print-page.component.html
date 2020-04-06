@@ -1,0 +1,188 @@
+
+
+
+<div class="scrolling-wrapper-flexbox" >
+
+        <table style="width: 700px; margin-left: auto; margin-right: auto;  ">
+                <tbody>
+                <tr>
+                <td>
+                <table style="margin-left: auto; margin-right: auto; width: 121px;">
+                <tbody>
+                <tr>
+                <td style="width: 49px;">&nbsp;</td>
+                <td style="width: 68px;">&nbsp;</td>
+                </tr>
+                <tr>
+                <td style="width: 49px;">Day</td>
+                <td style="width: 68px;">{{info?.Day}}</td>
+                </tr>
+                <tr>
+                <td style="width: 49px;">Date:</td>
+                <td style="width: 68px;">{{info?.JobDate}}</td>
+                </tr>
+                <tr>
+                <td style="width: 49px;">TRUCK NO:</td>
+                <td style="width: 68px;">{{info?.TruckNumber}}</td>
+                </tr>
+                <tr>
+                <td style="width: 49px;">TRAILER TYPE:</td>
+                <td style="width: 68px;">{{info?.TruckType}}</td>
+                </tr>
+                </tbody>
+                </table>
+                </td>
+                <td>
+                <div *ngIf="subha ; else showPar">
+                <h1 style="text-align: center;">{{info?.BrokerDispatcherName}}</h1>
+                <h2 style="text-align: center;">General Hauling</h2>
+                <h2 style="text-align: center;">Cell:{{info?.BrokerDispatcherPhone}}</h2>
+                <p style="text-align: center;">{{info?.BrokerEmail}}</p>
+                </div>
+                <ng-template #showPar>
+                <h1 style="text-align: center;">{{info?.ParHauler}}</h1>
+                <h2 style="text-align: center;">General Hauling</h2>
+                <p style="text-align: center;">{{info?.ParHaulerPhone}}</p>
+                <p style="text-align: center;">{{info?.ParHaulerEmail}}</p>
+                </ng-template>
+                </td>
+                <td>
+                <table style="margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <td>
+                <p style="text-align: center;">SHIPPING ORDER</p>
+                <p style="text-align: center;">and FREIGHT BILL</p>
+                </td>
+                </tr>
+                <tr>
+                <td style="text-align: center;">
+                <p>TYPE OF TRUCK</p>
+                <p>{{info?.TruckType}}</p>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 688px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <div *ngIf="!subha" >
+                <td style="text-align: left; width: 232px;">SUB HAULER</td>
+                <td style="text-align: left; width: 392px;">{{info?.ParHauler}} - {{info?.OwnerCompanyName}}</td>
+                </div>
+                <td style="text-align: left; width: 231px;">P.O.No/JOB#</td>
+                <td style="text-align: left; width: 513px;">{{info?.JobID}}</td>
+                </tr>
+                <tr>
+                <td style="text-align: left; width: 232px;">PRIME CARRIER</td>
+                <td style="text-align: left; width: 392px;">{{info?.BrokerDispatcherName}}</td>
+                <td style="text-align: left; width: 231px;">CONSIGNEE</td>
+                <td style="text-align: left; width: 513px;">{{info?.ForemanName}}</td>
+                </tr>
+                <tr>
+                <td style="text-align: left; width: 232px;">SHIPPER/CONTRACTOR</td>
+                <td style="text-align: left; width: 392px;">{{info?.Contractor}}</td>
+                <td style="text-align: left; width: 231px;">DESTINATION</td>
+                <td style="text-align: left; width: 513px;">{{info?.LoadAt}}</td>
+                </tr>
+                <tr>
+                <td style="text-align: left; width: 232px;">POINT OF ORIGIN</td>
+                <td style="text-align: left; width: 392px;">{{info?.ArriveAt}}</td>
+                <td style="text-align: left; width: 231px;">CITY</td>
+                <td style="text-align: left; width: 513px;">{{info?.Dcity}}</td>
+                </tr>
+                <tr>
+                <td style="text-align: left; width: 232px;">CITY</td>
+                <td style="text-align: left; width: 392px;">{{info?.Ocity}}</td>
+                <td style="text-align: left; width: 231px;">MANIFEST No.</td>
+                <td style="text-align: left; width: 513px;">{{info?.ManifestNo}}</td>
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 696px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <td style="width: 373px; background-color: white; text-align: center;"><span style="color: black;">MATERIALS</span></td>
+                <td style="width: 166px; background-color: white;"><span style="color: black;">LOADING</span></td>
+                <td style="width: 166px; background-color: white;"><span style="color: black;">UNLOADING</span></td>
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <td style="text-align: center;">NO.</td>
+                <td style="text-align: center;">SCALE TAG NO</td>
+                <td style="text-align: center;">YARD OF WEIGHT</td>
+                <td style="text-align: center;">TYPE OF MATERIAL</td>
+                <td style="text-align: center;">TIME ARRIVE</td>
+                <td style="text-align: center;">TIME LEAVE</td>
+                <td style="text-align: center;">TIME ARRIVE</td>
+                <td style="text-align: center;">TIME LEAVE</td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr *ngFor="let item of tabs|async; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item?.ScaleTagID}}</td>
+                <td>{{item?.Weight}}</td>
+                <td>{{item?.Material}}</td>
+                <td>{{item?.LoadStart}}</td>
+                <td>{{item?.LoadEnd}}</td>
+                <td>{{item?.UnloadStart}}</td>
+                <td>{{item?.UnloadEnd}}</td>
+                </tr>
+                <tr >
+                <td colspan="8">
+                Notes:{{info?.notes}}
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr style="height: 23px;">
+                <td style="height: 23px;">START:{{info?.StartShiftTime}}</td>
+                <td style="height: 23px;">STOP:{{info?.EndShiftTime}}</td>
+                <td style="height: 23px;">DEDUCT TIME:</td>
+                <td style="height: 23px;">NET TIME: {{info?.NetTime}} hours</td>
+                <td style="height: 23px;">BRIDGEFARE: </td>
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <td>
+                        <div>Driver Name: {{info?.DriverName}}</div>
+                        DRIVER    <img src={{info?.DriverSignData}} height="50" width="100">
+                 </td>
+                <td>
+                        <div>Foreman Name: {{info?.ForemanName}}</div>
+                        RECEIVED BY <img src={{info?.ForemanSignData}} height="50" width="100">
+                  </td>
+                </tr>
+                <tr>
+                <td colspan="8">
+                        Foreman notes:{{info?.ForemanNotes}}
+                </td>  
+                </tr>
+                </tbody>
+                </table>
+                <table style="width: 700px; margin-left: auto; margin-right: auto;">
+                <tbody>
+                <tr>
+                <td>Customer responsible for (A) checking Type &amp; quality of material <span style="text-decoration: underline;">before</span> driver dumps load (B) Correct location of dumping (C) Overweight loads &amp; court fines (D) Safe access &amp; exit for truck (E) <span style="text-decoration: underline;">Firm level</span> ground for dumping (F) Collection Charges.</td>
+                </tr>
+                </tbody>
+                </table>
+
+</div>
+<div class="Center">
+<button (click)="print()">print</button>
+<button (click)="sentEmail()">email</button>
+</div>

@@ -1,0 +1,8 @@
+<div >
+    <img style="width:267px;height:390px" [src]="data.diaImg">
+    cards: {{data.diaNumber}}
+    price: {{data.diaPrice}}
+    </div >
+    <div>
+        <a [routerLink]="['/addcard',data.diaId]" (click)="onNoClick()" >details</a>
+    </div>
