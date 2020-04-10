@@ -1,4 +1,4 @@
-import { Component, OnInit,OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -11,15 +11,17 @@ import { Component, OnInit,OnChanges } from '@angular/core';
 
 export class PaintComponent implements OnInit {
 
-  constructor() { }
+   
 
-  ngDoCheck(){
-    window.addEventListener("mouseup", (e)=>{
-      console.log("move"+e)
-    });
-  }
+    constructor() {
+       
+    }
+
 
 ngOnInit() {
+
+  console.log(window.event);
+
     var canvas = <HTMLCanvasElement>document.getElementById("mycanvas");
     var context = canvas.getContext("2d");
 
@@ -51,33 +53,22 @@ ngOnInit() {
 
     }
 
-    // canvas.addEventListener('mousedown', (e)=>{
-    //   console.log("down")
-    // });
+    canvas.addEventListener('click', (e)=>{
 
-    // canvas.addEventListener('mouseup', (e)=>{
-    //   console.log("up")
-    // });
+      console.log(e);
+      let offsetX=e.offsetX;
+      let offsetY=e.offsetY;
 
-  
+      let pixel=[Math.floor(offsetX/pixelSize),Math.floor(offsetY/pixelSize)];
 
-
-    // canvas.addEventListener('click', (e)=>{
-
-    //   console.log(e);
-    //   let offsetX=e.offsetX;
-    //   let offsetY=e.offsetY;
-
-    //   let pixel=[Math.floor(offsetX/pixelSize),Math.floor(offsetY/pixelSize)];
-
-    //   if(e.which==1){
-    //       console.log(e+"mousedown")
-    //   }
+      if(e.which==1){
+          console.log(e+"mousedown")
+      }
       
-    //   //Zoomed in red 'square'
-    //   context.fillStyle = "black";
-    //   context.fillRect(pixel[0]*pixelSize, pixel[1]*pixelSize, pixelSize-1, pixelSize-1);
-    // });
+      //Zoomed in red 'square'
+      context.fillStyle = "black";
+      context.fillRect(pixel[0]*pixelSize, pixel[1]*pixelSize, pixelSize-1, pixelSize-1);
+    });
     
     
   }
