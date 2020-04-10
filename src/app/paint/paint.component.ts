@@ -44,7 +44,7 @@ function watchColorPicker(event) {
     var canvas = <HTMLCanvasElement>document.getElementById("mycanvas");
     var context = canvas.getContext("2d");
     
-    let Dimension=25;
+    let Dimension=10;
     let width=canvas.width;
     let height=canvas.height;
     let pixelSize=width/Dimension;
