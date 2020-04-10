@@ -77,6 +77,7 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
 import { GiveawaysComponent } from './giveaways/giveaways.component';
 import { PricecheckComponent } from './pricecheck/pricecheck.component';
 import { MapComponent } from './map/map.component';
+import { PaintComponent } from './paint/paint.component';
 
 
 
@@ -158,6 +159,7 @@ const firebaseConfig = {
     GiveawaysComponent,
     PricecheckComponent,
     MapComponent,
+    PaintComponent,
     
   ],
   entryComponents: [
@@ -192,6 +194,7 @@ const firebaseConfig = {
     AngularFireMessagingModule,
     SignaturePadModule,
     RouterModule.forRoot([
+      {path:'paint',component:PaintComponent},
       {path:'map',component:MapComponent},
       {path:'checkprice',component:PricecheckComponent},
       {path:'giveaways',component:GiveawaysComponent},
